@@ -1,28 +1,62 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Navbar />
+    <h1>Products</h1>
+    <MenuItems />
+    <div class="content">
+      <div class="product-grid">
+        <CardItem />
+        <CardItem />
+        <CardItem />
+        <CardItem />
+        <CardItem />
+        <CardItem />
+        <CardItem />
+        <CardItem />
+      </div>
+
+      <CartPanel />
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import CardItem from "./components/CardItem.vue";
+import CartPanel from "./components/CartPanel.vue";
+import MenuItems from "./components/MenuItems.vue";
+import Navbar from "./components/Navbar.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    CardItem,
+    CartPanel,
+    MenuItems,
+    Navbar,
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+@import "./styles.css";
+
+body {
+  margin: 20px;
+}
+h1 {
+  text-align: left;
+  margin-left: 50px;
+}
+.content {
+  display: flex;
+}
+.product-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 70%;
 }
 </style>

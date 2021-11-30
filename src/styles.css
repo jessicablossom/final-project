@@ -1,0 +1,19 @@
+/* colors */
+:root {
+  --main-primary-color: #d83a56;
+  --light-primary-color: #ff616d;
+  --main-secondary-color: #66de93;
+  --text-primary-color: #303030;
+  --text-secondary-color: #f2f2f2;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+}
+
+#app {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--text-primary-color);
+  margin-top: 60px;
+}
