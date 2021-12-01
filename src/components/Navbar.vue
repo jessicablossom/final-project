@@ -26,13 +26,13 @@ li {
   cursor: pointer;
 }
 .navbar {
-  background-color: var(--main-primary-color);
+  background-color: var(--light-primary-color);
   color: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
   left: 0;
-  height: 30px;
+  height: 35px;
   padding: 10px;
   position: fixed;
   top: 0;

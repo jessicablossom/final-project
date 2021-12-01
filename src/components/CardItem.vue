@@ -1,22 +1,29 @@
 <template>
   <div class="card">
-    <div class="cuadrado"></div>
+    <div>
+      <img :src="item.image" />
+    </div>
     <div class="card-content">
-      <h3>Small cone of fries</h3>
-      <p>Small cone of fries with 2 sauces of your choice</p>
-      <h3>$ 1,00</h3>
+      <h3>{{ item.name }}</h3>
+      <p>{{ item.description }}</p>
+      <h3>$ {{ item.price }}</h3>
     </div>
     <button class="btn-primary-circle">+</button>
   </div>
 </template>
 
-<script></script>
+<script>
+export default {
+  name: "Card",
+  props: ["item"],
+};
+</script>
 <style>
 .card {
   height: 130px;
   width: 350px;
   border: 0.5px solid #d4d4d4;
-  padding: 0 10px;
+  padding: 10px;
   border-left: 8px solid var(--main-secondary-color);
   margin: 10px;
   display: flex;
@@ -29,27 +36,23 @@
 .card:hover {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
-.cuadrado {
-  height: 100px;
-  width: 100px;
-  background-color: lightslategray;
-}
+
 .card-content {
   height: 100%;
-  width: 50%;
+  width: 55%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 .card-content h3 {
   margin: 0;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: bold;
 }
 .card-content p {
   margin: 0;
-  font-size: 10px;
+  font-size: 12px;
 }
 .btn-primary-circle {
   align-self: flex-start;
@@ -66,14 +69,12 @@
 .btn-primary:hover {
   background-color: var(--main-secondary-color);
 }
-
+.hide {
+  display: none;
+}
 @media screen and (max-width: 1241px) {
   .card {
     width: 40%;
-  }
-  .cuadrado {
-    height: 70px;
-    width: 70px;
   }
 }
 
