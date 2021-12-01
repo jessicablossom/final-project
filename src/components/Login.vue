@@ -13,7 +13,9 @@
       <p>Forgot pasword?</p>
       <p>Don't haven an account <a href="">Create one now</a></p>
     </form>
-    <div class="footer"></div>
+    <div class="footer">
+      <h1>Your favourite frieds any moment any place</h1>
+    </div>
   </div>
 </template>
 
@@ -69,10 +71,17 @@ a {
   justify-content: space-between;
 }
 .footer {
-  background-color: var(--light-primary-color);
+  background-color: var(--main-primary-color);
+  color: white;
   height: 150px;
   width: 100%;
   margin-top: -6px;
+}
+.footer h1 {
+  width: 40%;
+  font-size: 35px;
+  font-weight: 800;
+  text-align: center;
 }
 @media screen and (max-width: 1066px) {
   .login {
