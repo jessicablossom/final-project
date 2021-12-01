@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <Navbar />
+    <Login />
     <h1>Products</h1>
     <MenuItems />
     <div class="content">
@@ -25,6 +26,7 @@ import CardItem from "./components/CardItem.vue";
 import CartPanel from "./components/CartPanel.vue";
 import MenuItems from "./components/MenuItems.vue";
 import Navbar from "./components/Navbar.vue";
+import Login from "./components/Login.vue";
 
 export default {
   name: "App",
@@ -33,6 +35,7 @@ export default {
     CartPanel,
     MenuItems,
     Navbar,
+    Login,
   },
 };
 </script>
@@ -40,10 +43,10 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
 @import "./styles.css";
-
 body {
-  margin: 20px;
+  margin: 0;
 }
+
 h1 {
   text-align: left;
   margin-left: 50px;
@@ -51,6 +54,7 @@ h1 {
 .content {
   display: flex;
 }
+
 .product-grid {
   display: flex;
   align-items: center;

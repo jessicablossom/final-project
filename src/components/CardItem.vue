@@ -6,7 +6,7 @@
       <p>Small cone of fries with 2 sauces of your choice</p>
       <h3>$ 1,00</h3>
     </div>
-    <button class="btn-primary">+</button>
+    <button class="btn-primary-circle">+</button>
   </div>
 </template>
 
@@ -51,7 +51,7 @@
   margin: 0;
   font-size: 10px;
 }
-.btn-primary {
+.btn-primary-circle {
   align-self: flex-start;
   background-color: var(--main-secondary-color);
   border: none;
