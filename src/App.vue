@@ -3,7 +3,7 @@
     <Navbar />
     <Login />
     <MenuItems />
-    <h1 id="#fries">Potatoes Fries</h1>
+    <h1 id="#fries">Fried Potatoes</h1>
     <div class="content">
       <div class="product-grid">
         <div v-for="(item, i) in items" :key="i">
@@ -76,6 +76,34 @@ export default {
           price: 3,
           image: "./assets/triple-sauces.svg",
         },
+        {
+          name: "Pepsi can",
+          description: "12oz can, options: 7up, pepsi, fanta",
+          stock: true,
+          price: 0.5,
+          image: "./assets/pepsi.svg",
+        },
+        {
+          name: "Pepsi bottle",
+          description: "20oz bottle, options: 7up, pepsi, fanta",
+          stock: true,
+          price: 0.75,
+          image: "./assets/pepsi-bottle.svg",
+        },
+        {
+          name: "Beer can",
+          description: "12oz beer can, only heineken brand",
+          stock: true,
+          price: 1.0,
+          image: "./assets/beer-can.svg",
+        },
+        {
+          name: "Beer bottle",
+          description: "24oz beer bottle, only heineken brand",
+          stock: true,
+          price: 2,
+          image: "./assets/beer-bottle.svg",
+        },
       ],
     };
   },
@@ -95,6 +123,7 @@ h1 {
 }
 .content {
   display: flex;
+  justify-content: space-evenly;
 }
 
 .product-grid {
