@@ -1,41 +1,45 @@
 <template>
-  <nav class="navbar">
+  <v-app-bar class="navbar" color="var(--light-primary-color)" elevation="1">
     <img src="../assets/Logo.svg" />
     <ul>
       <li>Home</li>
-      <li><font-awesome-icon :icon="['fas', 'user-secret']" />Cart</li>
-      <li>User</li>
+      <li>Cart</li>
+      <li><v-avatar size="40"></v-avatar></li>
     </ul>
-  </nav>
+  </v-app-bar>
 </template>
-
 <script></script>
 
 <style scoped>
-ul {
-  padding: 5px;
-  margin-right: 10px;
-  list-style: none;
+.navbar {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  left: 0;
+  height: 50px;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}
+
+.v-app-bar ul {
+  color: white;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-self: end;
+  list-style: none;
+  margin-right: 10px;
+  padding: 5px;
 }
-li {
-  font-family: "Nunito", sans-serif;
+.v-app-bar li {
   font-size: 16px;
   margin-right: 15px;
   cursor: pointer;
 }
-.navbar {
-  background-color: var(--light-primary-color);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  left: 0;
-  height: 35px;
-  padding: 10px;
-  position: fixed;
-  top: 0;
-  width: 100%;
+.v-avatar {
+  background-color: white;
 }
 </style>

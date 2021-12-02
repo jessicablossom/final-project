@@ -1,15 +1,15 @@
 <template>
   <div class="row">
-    <div class="hero">
+    <div class="banner">
       <img src="../assets/hero.jpeg" />
     </div>
     <form class="login">
       <h2>SIGN IN</h2>
       <span>Email</span>
-      <input />
+      <input name="email" type="email" />
       <span>Password</span>
-      <input />
-      <button class="btn-primary">Login</button>
+      <input name="password" type="password" />
+      <v-btn block>Login</v-btn>
       <p>Forgot pasword?</p>
       <p>Don't haven an account <a href="">Create one now</a></p>
     </form>
@@ -24,11 +24,11 @@ export default {};
 </script>
 
 <style>
-.hero {
+.banner {
   width: 60%;
   margin-top: -10px;
 }
-.hero img {
+.banner img {
   width: 100%;
 }
 .login {
@@ -36,11 +36,16 @@ export default {};
   flex-direction: column;
   padding: 0 80px 0 80px;
   width: 25%;
+  margin: 0 auto;
+  justify-self: start;
+}
+h2 {
+  margin-top: 10px;
 }
 .login h2,
 p,
 a {
-  align-self: center;
+  text-align: center;
 }
 a {
   font-weight: bold;
@@ -54,10 +59,10 @@ a {
 .login input:focus {
   outline: none;
 }
-.btn-primary {
-  background-color: var(--main-secondary-color);
+.v-btn {
+  background-color: var(--main-secondary-color) !important;
   border: none;
-  color: #ffffff;
+  color: #ffffff !important;
   font-size: 16px;
   height: 30px;
   margin: 10px 0;
@@ -73,7 +78,7 @@ a {
 .footer {
   background-color: var(--main-primary-color);
   color: white;
-  height: 150px;
+  height: 155px;
   width: 100%;
   margin-top: -6px;
 }
@@ -82,6 +87,8 @@ a {
   font-size: 35px;
   font-weight: 800;
   text-align: center;
+  margin: auto;
+  margin-top: 10px;
 }
 @media screen and (max-width: 1066px) {
   .login {

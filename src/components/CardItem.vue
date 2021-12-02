@@ -1,15 +1,15 @@
 <template>
-  <div class="card">
-    <div>
-      <img :src="item.image" />
-    </div>
+  <v-card elevation="2" class="d-flex align-center justify-center">
+    <img :src="item.image" />
     <div class="card-content">
       <h3>{{ item.name }}</h3>
       <p>{{ item.description }}</p>
       <h3>$ {{ item.price }}</h3>
     </div>
-    <button class="btn-primary-circle">+</button>
-  </div>
+    <v-btn class="mx-2" fab dark small color="var(--main-secondary-color)">
+      <v-icon dark> mdi-plus </v-icon>
+    </v-btn>
+  </v-card>
 </template>
 
 <script>
@@ -19,31 +19,25 @@ export default {
 };
 </script>
 <style>
-.card {
-  height: 130px;
-  width: 350px;
-  border: 0.5px solid #d4d4d4;
-  padding: 10px;
-  border-left: 8px solid var(--main-secondary-color);
-  margin: 10px;
-  display: flex;
+.v-card {
+  display: flex !important;
   flex-direction: row;
-  align-items: center;
   justify-content: space-between;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-.card:hover {
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  align-items: center;
+  border: 0.5px solid #d4d4d4;
+  margin: 10px;
+  padding: 10px;
+  width: 28vw;
 }
 
 .card-content {
   height: 100%;
-  width: 55%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-evenly;
+  padding: 10px;
 }
 .card-content h3 {
   margin: 0;
@@ -51,19 +45,15 @@ export default {
   font-weight: bold;
 }
 .card-content p {
+  text-align: left;
   margin: 0;
   font-size: 12px;
 }
-.btn-primary-circle {
+.v-btn {
   align-self: flex-start;
   background-color: var(--main-secondary-color);
   border: none;
-  border-radius: 25px;
   color: #ffffff;
-  font-size: 25px;
-  height: 30px;
-  margin-top: 10px;
-  width: 30px;
   cursor: pointer;
 }
 .btn-primary:hover {
@@ -71,16 +61,5 @@ export default {
 }
 .hide {
   display: none;
-}
-@media screen and (max-width: 1241px) {
-  .card {
-    width: 40%;
-  }
-}
-
-@media screen and (max-width: 800px) {
-  .card {
-    width: 100%;
-  }
 }
 </style>
