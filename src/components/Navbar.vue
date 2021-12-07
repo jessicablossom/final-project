@@ -1,11 +1,13 @@
 <template>
-  <v-app-bar class="navbar" color="var(--light-primary-color)" app dark>
-    <img src="../assets/Logo.svg" />
-    <ul>
-      <li><router-link to="/Home">Home</router-link></li>
-      <li><router-link to="/Catalog">Catalog</router-link></li>
-      <li><router-link to="/Register">Register</router-link></li>
-    </ul>
+  <v-app-bar color="var(--light-primary-color)" app dark>
+    <div class="navbar">
+      <img src="../assets/Logo.svg" />
+      <ul>
+        <li><router-link to="/Home">Home</router-link></li>
+        <li><router-link to="/Catalog">Catalog</router-link></li>
+        <li><router-link to="/Register">Register</router-link></li>
+      </ul>
+    </div>
   </v-app-bar>
 </template>
 <script></script>
@@ -15,12 +17,14 @@
   display: flex !important;
   flex-direction: row !important;
   align-items: center !important;
-  justify-content: space-between !important;
+  justify-content: space-around !important;
   left: 0;
   height: 50px;
   padding: 10px;
   position: fixed;
   top: 0;
+  height: 60px;
+  width: 100vw;
   z-index: 1;
 }
 
@@ -33,9 +37,13 @@
   margin-right: 10px;
   padding: 5px;
 }
-.v-app-bar li {
-  font-size: 16px;
-  margin-right: 15px;
+.v-app-bar a {
+  font-weight: 700 !important;
+  font-family: "Nunito", sans-serif;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  margin-right: 20px;
   cursor: pointer;
 }
 .v-avatar {
