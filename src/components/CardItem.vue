@@ -6,7 +6,14 @@
       <p>{{ item.description }}</p>
       <h3>$ {{ item.price }}</h3>
     </div>
-    <v-btn class="mx-2" fab dark small color="var(--main-secondary-color)">
+    <v-btn
+      @click="addToCart"
+      class="mx-2"
+      fab
+      dark
+      small
+      color="var(--main-secondary-color)"
+    >
       <v-icon dark> mdi-plus </v-icon>
     </v-btn>
   </v-card>
