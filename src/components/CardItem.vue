@@ -1,19 +1,12 @@
 <template>
-  <v-card elevation="2" class="d-flex align-center justify-center">
+  <v-card elevation="2" class="card">
     <img :src="item.image" />
     <div class="card-content">
       <h3>{{ item.name }}</h3>
       <p>{{ item.description }}</p>
       <h3>$ {{ item.price }}</h3>
     </div>
-    <v-btn
-      @click="addToCart"
-      class="mx-2"
-      fab
-      dark
-      small
-      color="var(--main-secondary-color)"
-    >
+    <v-btn class="mx-2" fab dark small color="var(--main-secondary-color)">
       <v-icon dark> mdi-plus </v-icon>
     </v-btn>
   </v-card>
@@ -26,7 +19,9 @@ export default {
 };
 </script>
 <style>
-.v-card {
+/* media screen and (min-1280px) */
+
+.card {
   display: flex !important;
   flex-direction: row;
   justify-content: space-between;
@@ -35,11 +30,12 @@ export default {
   margin: 10px;
   padding: 10px;
   width: 28vw;
+  height: 135px;
 }
 
 .card-content {
   height: 100%;
-  width: 100%;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -68,5 +64,25 @@ export default {
 }
 .hide {
   display: none;
+}
+
+@media screen and (min-width: 1080px) and (max-width: 1279px) {
+  .card {
+    width: 28vw;
+  }
+  .v-btn {
+    align-self: flex-end;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1079px) {
+  .card {
+    width: 46vw;
+  }
+}
+@media screen and (max-width: 767px) {
+  .card {
+    min-width: 90vw;
+  }
 }
 </style>

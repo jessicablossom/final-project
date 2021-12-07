@@ -2,9 +2,9 @@
   <v-app-bar class="navbar" color="var(--light-primary-color)" app dark>
     <img src="../assets/Logo.svg" />
     <ul>
-      <li>Home</li>
-      <li>Cart</li>
-      <li><v-avatar size="40"></v-avatar></li>
+      <li><router-link to="/Home">Home</router-link></li>
+      <li><router-link to="/Catalog">Catalog</router-link></li>
+      <li><router-link to="/Register">Register</router-link></li>
     </ul>
   </v-app-bar>
 </template>
