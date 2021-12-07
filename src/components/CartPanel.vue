@@ -32,6 +32,6 @@ export default {};
   justify-content: center;
 }
 .center img {
-  width: 90%;
+  width: 70%;
 }
 </style>

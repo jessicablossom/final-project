@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <v-app>
     <Navbar />
     <Login />
     <MenuItems />
@@ -12,7 +12,7 @@
       </div>
       <CartPanel />
     </div>
-  </div>
+  </v-app>
 </template>
 
 <script>

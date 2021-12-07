@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar class="navbar" color="var(--light-primary-color)" elevation="1">
+  <v-app-bar class="navbar" color="var(--light-primary-color)" app dark>
     <img src="../assets/Logo.svg" />
     <ul>
       <li>Home</li>
@@ -25,7 +25,6 @@
 }
 
 .v-app-bar ul {
-  color: white;
   display: flex;
   flex-direction: row;
   align-items: center;
