@@ -3,15 +3,18 @@
     <div class="banner">
       <img src="../assets/hero.jpeg" />
     </div>
-    <form class="login">
-      <h2>SIGN IN</h2>
+    <form class="register">
+      <h2>Create Account</h2>
       <span>Email</span>
+      <input name="email" type="email" />
+      <span>Repeat your Email</span>
       <input name="email" type="email" />
       <span>Password</span>
       <input name="password" type="password" />
-      <v-btn block>Login</v-btn>
-      <p>Forgot pasword?</p>
-      <p>Don't haven an account <a href="">Create one now</a></p>
+      <span>Repeat your Password</span>
+      <input name="password" type="password" />
+      <v-btn block>Create Account</v-btn>
+      <p>Already have an account? <a href="">Login here now</a></p>
     </form>
     <div class="footer">
       <h1>Your favourite frieds any moment any place</h1>
@@ -20,7 +23,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: "register",
+};
 </script>
 
 <style>
@@ -31,7 +36,7 @@ export default {};
 .banner img {
   width: 100%;
 }
-.login {
+.register {
   display: flex;
   flex-direction: column;
   padding: 0 80px 0 80px;
@@ -42,7 +47,7 @@ export default {};
 h2 {
   margin-top: 10px;
 }
-.login h2,
+.register h2,
 p,
 a {
   text-align: center;
@@ -51,7 +56,7 @@ a {
   font-weight: bold;
   color: var(--main-secondary-color);
 }
-.login input {
+.register input {
   height: 25px;
   border: 1px #d4d4d4 solid;
   margin: 10px 0;
@@ -91,7 +96,7 @@ a {
   margin-top: 10px;
 }
 @media screen and (max-width: 1066px) {
-  .login {
+  .register {
     width: 100vw;
   }
   .btn-primary {

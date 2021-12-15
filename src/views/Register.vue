@@ -1,24 +1,15 @@
 <template>
-  <div class="register">
-    <Navbar />
-    <Login />
-  </div>
+  <Register />
 </template>
-<script>
-import Navbar from "../components/Navbar.vue";
-import Login from "../components/Login.vue";
 
+<script>
+import Register from "../components/Register.vue";
 export default {
   name: "Register",
   components: {
-    Navbar,
-    Login,
+    Register,
   },
 };
 </script>
-<style scoped>
-.register {
-  height: 100vh;
-  width: 100vw;
-}
-</style>
+
+<style></style>

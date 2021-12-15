@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <Navbar />
-    <router-view></router-view>
+    <router-view />
   </v-app>
 </template>
 
@@ -19,8 +19,15 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import "./styles.css";
+
+#app,
 body {
-  margin: 0;
+  margin: 0 !important;
+  margin-top: 65px !important;
+}
+.v-application {
+  width: 100vw !important;
+  height: 90vh !important;
 }
 h1 {
   text-align: left;
