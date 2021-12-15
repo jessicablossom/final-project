@@ -1,11 +1,11 @@
 <template>
-  <div class="right-panel">
+  <v-col class="right-panel">
     <h3>Your Products</h3>
     <div class="center">
       <img src="../assets/empty-cart.png" />
       <p>Your cart is empty</p>
     </div>
-  </div>
+  </v-col>
 </template>
 
 <script>
@@ -14,16 +14,14 @@ export default {};
 
 <style>
 .right-panel {
+  width: 37vw;
   border: 0.5px solid #d4d4d4;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   display: flex;
   align-items: flex-start;
   justify-content: space-evenly;
   flex-direction: column;
-  height: 40%;
-  margin: 10px;
   padding: 20px;
-  width: 30%;
+  margin: 20px;
 }
 .center {
   display: flex;
@@ -33,5 +31,11 @@ export default {};
 }
 .center img {
   width: 70%;
+}
+
+@media screen and (min-width: 1080px) and (max-width: 1279px) {
+  .right-panel {
+    width: 30vw;
+  }
 }
 </style>

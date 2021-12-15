@@ -1,7 +1,9 @@
 <template>
   <v-app>
     <Navbar />
-    <router-view />
+    <v-main>
+      <router-view />
+    </v-main>
   </v-app>
 </template>
 
@@ -23,12 +25,8 @@ export default {
 #app,
 body {
   margin: 0 !important;
-  margin-top: 65px !important;
 }
-.v-application {
-  width: 100vw !important;
-  height: 90vh !important;
-}
+
 h1 {
   text-align: left;
   margin-left: 50px;

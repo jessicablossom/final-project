@@ -1,21 +1,23 @@
 <template>
   <v-card elevation="2" class="card">
-    <img :src="item.image" />
-    <div class="card-content">
-      <h3>{{ item.name }}</h3>
-      <p>{{ item.description }}</p>
-      <h3>$ {{ item.price }}</h3>
-    </div>
-    <v-btn class="mx-2" fab dark small color="var(--main-secondary-color)">
-      <v-icon dark> mdi-plus </v-icon>
-    </v-btn>
+    <v-row>
+      <v-col cols="4"><img :src="product.image" /></v-col>
+      <v-col cols="6" class="card-content"
+        ><h3>{{ product.name }}</h3>
+        <p>{{ product.description }}</p>
+        <h3>$ {{ product.price }}</h3>
+      </v-col>
+      <v-btn class="mx-2" fab dark small color="var(--main-secondary-color)">
+        <v-icon dark> mdi-plus </v-icon>
+      </v-btn>
+    </v-row>
   </v-card>
 </template>
 
 <script>
 export default {
   name: "Card",
-  props: ["item"],
+  props: ["product"],
 };
 </script>
 <style>
@@ -24,13 +26,11 @@ export default {
 .card {
   display: flex !important;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   border: 0.5px solid #d4d4d4;
-  margin: 10px;
+  margin: 5px;
   padding: 10px;
-  width: 28vw;
-  height: 135px;
 }
 
 .card-content {
@@ -52,12 +52,13 @@ export default {
   margin: 0;
   font-size: 12px;
 }
-.v-btn {
+.mx-2 {
   align-self: flex-start;
   background-color: var(--main-secondary-color);
   border: none;
   color: #ffffff;
   cursor: pointer;
+  margin-top: 5px;
 }
 .btn-primary:hover {
   background-color: var(--main-secondary-color);
@@ -68,7 +69,7 @@ export default {
 
 @media screen and (min-width: 1080px) and (max-width: 1279px) {
   .card {
-    width: 28vw;
+    width: 50vw !important;
   }
   .v-btn {
     align-self: flex-end;
@@ -77,7 +78,7 @@ export default {
 
 @media screen and (min-width: 768px) and (max-width: 1079px) {
   .card {
-    width: 46vw;
+    width: 100% !important;
   }
 }
 @media screen and (max-width: 767px) {

@@ -1,17 +1,19 @@
 <template>
-  <div class="container">
-    <h1>admin panel</h1>
-  </div>
+  <v-container>
+    <h1 class="text-align">Admin Panel</h1>
+    <AdminPanel />
+  </v-container>
 </template>
+
 <script>
+import AdminPanel from "../components/AdminPanel.vue";
 export default {
   name: "Admin",
-  components: {},
+  components: { AdminPanel },
 };
 </script>
 <style scoped>
-.container {
-  height: 90%;
-  width: 100vw;
+.text-align {
+  text-align: center;
 }
 </style>

@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Black Cherry ",
+    "description": "Vanilla ice cream loaded with bing cherries",
+    "stock": true,
+    "price": 2,
+    "image": "./assets/icecream-cherry.svg"
+  },
+  {
+    "name": "Chocolate",
+    "description": "Rich creamy chocolate ice cream",
+    "stock": true,
+    "price": 2,
+    "image": "./assets/icecream-chocolate.svg"
+  },
+  {
+    "name": "Caramel River",
+    "description": "Golden vanilla ice cream flooded with caramel swirl",
+    "stock": true,
+    "price": 2,
+    "image": "./assets/icecream-caramel.svg"
+  }
+]

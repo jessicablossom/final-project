@@ -1,104 +1,42 @@
 <template>
   <div>
-    <MenuItems />
-    <h1 id="#fries">Fried Potatoes</h1>
+    <h1>Products</h1>
     <div class="content">
       <div class="product-grid">
-        <div v-for="(item, i) in items" :key="i">
-          <CardItem :item="item" />
-        </div>
+        <v-col cols="6" v-for="product in products" :key="product.id">
+          <CardItem :product="product" />
+        </v-col>
       </div>
-      <CartPanel class="responsive" />
+      <div><CartPanel class="responsive" /></div>
     </div>
   </div>
 </template>
 <script>
 import CardItem from "../components/CardItem.vue";
 import CartPanel from "../components/CartPanel.vue";
-import MenuItems from "../components/MenuItems.vue";
 
 export default {
   name: "Home",
-  props: ["item"],
   components: {
-    MenuItems,
     CardItem,
     CartPanel,
   },
+  methods: {
+    getProducts() {
+      fetch("https://61b8f28f38f69a0017ce5e38.mockapi.io/products")
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          this.products = data;
+        });
+    },
+  },
+  mounted() {
+    this.getProducts();
+  },
   data() {
     return {
-      items: [
-        {
-          name: "Small cone of fries",
-          description: "Small cone of fries with 2 sauces of your choice",
-          stock: true,
-          price: 1.0,
-          image: "./assets/small-cone.svg",
-        },
-        {
-          name: "Medium cone of fries",
-          description: "Medium cone of fries with 2 sauces of your choice",
-          stock: true,
-          price: 1.25,
-          image: "./assets/medium-cone.svg",
-        },
-        {
-          name: "Big cone of fries",
-          description: "Big cone of fries with 2 sauces of your choice",
-          stock: true,
-          price: 2.0,
-          image: "./assets/big-cone.svg",
-        },
-        {
-          name: "Bucket of fries",
-          description: "Bucket of fries with 3 sauces of your choice",
-          stock: true,
-          price: 3.0,
-          image: "./assets/bucket-fries.svg",
-        },
-        {
-          name: "Extra single dip sauce",
-          description: "Extra single dip sauce of your choice",
-          stock: true,
-          price: 0.5,
-          image: "./assets/single-sauce.svg",
-        },
-        {
-          name: "Extra 3 dip sauces",
-          description: "Extra 3 dip sauces of your choice",
-          stock: true,
-          price: 3,
-          image: "./assets/triple-sauces.svg",
-        },
-        {
-          name: "Pepsi can",
-          description: "12oz can, options: 7up, pepsi, fanta",
-          stock: true,
-          price: 0.5,
-          image: "./assets/pepsi.svg",
-        },
-        {
-          name: "Pepsi bottle",
-          description: "20oz bottle, options: 7up, pepsi, fanta",
-          stock: true,
-          price: 0.75,
-          image: "./assets/pepsi-bottle.svg",
-        },
-        {
-          name: "Beer can",
-          description: "12oz beer can, only heineken brand",
-          stock: true,
-          price: 1.0,
-          image: "./assets/beer-can.svg",
-        },
-        {
-          name: "Beer bottle",
-          description: "24oz beer bottle, only heineken brand",
-          stock: true,
-          price: 2,
-          image: "./assets/beer-bottle.svg",
-        },
-      ],
+      products: [],
     };
   },
 };
@@ -106,22 +44,32 @@ export default {
 <style scoped>
 /* min-width: 1280px*/
 
-.login {
-  background-color: lightcoral;
-  height: 100vh;
-  width: 100vw;
-}
 .content {
   display: flex;
+  flex-direction: row;
+  align-items: flex-start;
   justify-content: space-evenly;
+  margin-right: 0 !important;
+  margin-left: 0 !important;
 }
+
 .product-grid {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   flex-wrap: wrap;
   width: 60%;
+}
+@media screen and (min-width: 1080px) and (max-width: 1279px) {
+  .content {
+    flex-direction: row;
+    width: 100vw;
+  }
+  .product-grid {
+    flex-direction: column;
+    width: 60vw;
+  }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1079px) {
@@ -129,14 +77,13 @@ export default {
     flex-direction: row;
     margin: 0 20px 0 20px;
     justify-content: space-around !important;
+    width: 100vw;
+    margin-left: -50px !important;
   }
 
   .product-grid {
     flex-direction: column;
     width: 50%;
-  }
-  .responsive {
-    width: 40%;
   }
 }
 @media screen and (max-width: 767px) {

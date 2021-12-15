@@ -3,16 +3,35 @@
     <div class="banner">
       <img class="hero" src="../assets/hero.jpeg" />
     </div>
-    <form class="login">
-      <h2>Login</h2>
-      <span>Email</span>
-      <input name="email" type="email" />
-      <span>Password</span>
-      <input name="password" type="password" />
-      <v-btn block>Login</v-btn>
-      <p>Forgot pasword?</p>
-      <p>Don't haven an account? <a href="">Create one here</a></p>
-    </form>
+    <v-form
+      ref="login"
+      v-model="valid"
+      v-on:submit.prevent="onSubmit"
+      class="login"
+    >
+      <v-container fluid>
+        <h2>Login</h2>
+
+        <v-text-field
+          v-model="inputEmail"
+          :rules="emailRules"
+          label="Email"
+          placeholder="user@mail.com"
+          required
+        ></v-text-field>
+
+        <v-text-field
+          v-model="inputPassword"
+          :rules="passwordRules"
+          label="Password"
+          required
+        ></v-text-field>
+
+        <v-btn block>Login</v-btn>
+        <p>Forgot pasword?</p>
+        <p>Don't haven an account? <a href="">Create one here</a></p>
+      </v-container>
+    </v-form>
     <div class="footer">
       <h1>Your favourite frieds any moment any place</h1>
     </div>
@@ -22,6 +41,18 @@
 <script>
 export default {
   name: "LoginForm",
+  components: {},
+  data() {
+    return {
+      inputEmail: "",
+      inputPassword: "",
+      emailRules: [
+        (v) => !!v || "Email is required",
+        (v) => /.+@.+\..+/.test(v) || "Email must be valid",
+      ],
+      passwordRules: [(v) => !!v || "Password is required"],
+    };
+  },
 };
 </script>
 
@@ -34,24 +65,26 @@ export default {
   flex-direction: row;
   flex-wrap: wrap;
   align-items: flex-start;
-  height: 80%;
-  width: 100vw;
 }
 .banner {
-  height: 70vh;
+  height: 80vh;
   top: 0;
 }
 .banner img {
   height: 100%;
+}
+.v-form {
+  width: 40vw;
 }
 .login {
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
   padding: 0 80px 0 80px;
-  width: 25%;
+  width: 35%;
   margin: 20px auto;
   justify-self: start;
+  justify-content: space-around;
 }
 h2 {
   margin-top: 10px;
@@ -65,10 +98,9 @@ a {
   font-weight: bold;
   color: var(--main-secondary-color);
 }
-.login input {
-  height: 25px;
-  border: 1px #d4d4d4 solid;
-  margin: 10px 0;
+.input {
+  height: 10px;
+  margin: 10px !important;
 }
 .login input:focus {
   outline: none;
