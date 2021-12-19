@@ -49,6 +49,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
@@ -78,38 +80,30 @@ export default {
   name: "AdminPanel",
   methods: {
     getProducts() {
-      fetch("https://61b8f28f38f69a0017ce5e38.mockapi.io/products")
-        .then((res) => res.json())
+      axios
+        .get("https://61b8f28f38f69a0017ce5e38.mockapi.io/products")
         .then((data) => {
-          this.products = data;
+          this.products = data.data;
         });
     },
     addProduct() {
-      const header = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(this.newProduct),
-      };
-      fetch("https://61b8f28f38f69a0017ce5e38.mockapi.io/products", header)
-        .then((res) => res.json())
+      axios
+        .post(
+          "https://61b8f28f38f69a0017ce5e38.mockapi.io/products",
+          this.newProduct
+        )
         .then((data) => {
-          console.log("Created Product:", data);
+          console.log(data);
           this.getProducts();
         });
     },
     deleteProduct(productId) {
-      const header = {
-        method: "DELETE",
-      };
-      fetch(
-        `https://61b8f28f38f69a0017ce5e38.mockapi.io/products/${productId}`,
-        header
-      )
-        .then((res) => res.json())
+      axios
+        .delete(
+          `https://61b8f28f38f69a0017ce5e38.mockapi.io/products/${productId}`
+        )
         .then((data) => {
-          console.log("Deleted product:", data);
+          console.log(data);
           this.getProducts();
         });
     },
