@@ -12,6 +12,7 @@
   </div>
 </template>
 <script>
+import axios from "axios";
 import CardItem from "../components/CardItem.vue";
 import CartPanel from "../components/CartPanel.vue";
 
@@ -23,11 +24,10 @@ export default {
   },
   methods: {
     getProducts() {
-      fetch("https://61b8f28f38f69a0017ce5e38.mockapi.io/products")
-        .then((res) => res.json())
+      axios
+        .get("https://61b8f28f38f69a0017ce5e38.mockapi.io/products")
         .then((data) => {
-          console.log(data);
-          this.products = data;
+          this.products = data.data;
         });
     },
   },

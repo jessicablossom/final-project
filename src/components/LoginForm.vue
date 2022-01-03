@@ -19,14 +19,16 @@
           placeholder="user@mail.com"
           required
         ></v-text-field>
-
         <v-text-field
-          v-model="inputPassword"
-          :rules="passwordRules"
           label="Password"
-          required
-        ></v-text-field>
-
+          v-model="inputPassword"
+          :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+          :rules="passwordRules"
+          :type="show1 ? 'text' : 'password'"
+          hint="At least 8 characters"
+          @click:append="show1 = !show1"
+          counter
+        />
         <v-btn block>Login</v-btn>
         <p>Forgot pasword?</p>
         <p>Don't haven an account? <a href="">Create one here</a></p>
@@ -44,6 +46,7 @@ export default {
   components: {},
   data() {
     return {
+      show1: false,
       inputEmail: "",
       inputPassword: "",
       emailRules: [

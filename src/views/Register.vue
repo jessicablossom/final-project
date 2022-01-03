@@ -1,13 +1,16 @@
 <template>
-  <Register />
+  <v-main>
+    <h1>register</h1>
+    <RegisterForm
+  /></v-main>
 </template>
 
 <script>
-import Register from "../components/Register.vue";
+import RegisterForm from "../components/RegisterForm.vue";
 export default {
   name: "Register",
   components: {
-    Register,
+    RegisterForm,
   },
 };
 </script>
