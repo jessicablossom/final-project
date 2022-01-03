@@ -67,6 +67,7 @@ export default {
           password: this.password,
         };
         this.$store.dispatch("loginUser", loginForm);
+        this.$router.push("/admin");
       }
     },
   },

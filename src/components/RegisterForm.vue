@@ -23,6 +23,7 @@
           :rules="passwordRules"
           :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
           :type="show1 ? 'text' : 'password'"
+          hint="At least 8 characters"
           counter
           @click:append="show1 = !show1"
         />
@@ -72,7 +73,7 @@ export default {
         (v) => v == this.email || "Email does not match",
       ],
       passwordRules: [
-        (v) => !!v || "Password is required",
+        (v) => !!v || "Confirmation is required",
         (v) => v.length >= 8 || "Password at least 8 characters",
       ],
       confirmPasswordRules: [
@@ -89,6 +90,7 @@ export default {
           password: this.password,
         };
         this.$store.dispatch("addUser", registerForm);
+        this.$router.push("/home");
       }
     },
   },
