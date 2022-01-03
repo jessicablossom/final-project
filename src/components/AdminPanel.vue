@@ -1,102 +1,35 @@
 <template>
   <div class="admin-panel">
-    <div class="sidebar-product">
-      <v-card class="pa-4">
-        <h2>Add New product</h2>
-        <v-form>
-          <v-text-field
-            v-model="newProduct.name"
-            :rules="productNameRules"
-            label="Product Name"
-            required
-          />
-          <v-textarea
-            v-model="newProduct.description"
-            label="Product Description"
-            rows="1"
-            counter="50"
-          />
-          <v-text-field
-            v-model.number="newProduct.price"
-            :rules="productPriceRules"
-            label="Price"
-            prefix="$"
-            required
-          />
-          <v-text-field
-            v-model="newProduct.image"
-            label="Image File Path"
-            placeholder="/assets/icecream-cherry.svg"
-          />
-          <v-checkbox
-            v-model="newProduct.stock"
-            :rules="productStockRules"
-            label="is product in Stock?"
-            required
-          />
-          <v-btn @click="addProduct" block> Add product</v-btn>
-        </v-form>
-      </v-card>
-    </div>
-    <div class="sidebar-table">
-      <v-data-table :headers="productsHeaders" :items="products">
-        <template v-slot:item.action="{ item }">
-          <v-btn @click="deleteProduct(item.id)">Delete</v-btn>
-        </template>
-      </v-data-table>
-    </div>
+    <AdminUsers :users="getUsers" />
+    <AdminAddProduct />
+    <AdminTableProducts :products="getProducts" />
   </div>
 </template>
-
 <script>
+import AdminAddProduct from "./AdminAddProduct.vue";
+import AdminTableProducts from "./AdminTableProducts.vue";
+import AdminUsers from "./AdminUsers.vue";
+
 import axios from "axios";
 
 export default {
+  name: "AdminPanel",
+
+  components: {
+    AdminUsers,
+    AdminAddProduct,
+    AdminTableProducts,
+  },
   data() {
     return {
-      products: [],
-      productsHeaders: [
-        {
-          text: "Product Name",
-          value: "name",
-        },
-        { text: "Description", value: "description" },
-        { text: "Price", value: "price" },
-        { text: "Stock", value: "stock" },
-        { text: "Actions", value: "action" },
+      usersHeaders: [
+        { text: "Email", value: "email" },
+        { text: "UserID", value: "id" },
+        { text: "role", value: "adminrole" },
       ],
-      newProduct: {
-        name: "",
-        description: "",
-        price: "",
-        stock: false,
-        image: "",
-      },
-      productNameRules: [(v) => !!v || "Product Name is required"],
-      productPriceRules: [(v) => v > 0 || "Price should be major to 0"],
-      productStockRules: [(v) => !!v || "Stock is required"],
     };
   },
-  name: "AdminPanel",
   methods: {
-    getProducts() {
-      axios
-        .get("https://61b8f28f38f69a0017ce5e38.mockapi.io/products")
-        .then((data) => {
-          this.products = data.data;
-        });
-    },
-    addProduct() {
-      axios
-        .post(
-          "https://61b8f28f38f69a0017ce5e38.mockapi.io/products",
-          this.newProduct
-        )
-        .then((data) => {
-          console.log(data);
-          this.getProducts();
-        });
-    },
     deleteProduct(productId) {
       axios
         .delete(
@@ -108,8 +41,17 @@ export default {
         });
     },
   },
+  computed: {
+    getProducts() {
+      return this.$store.state.products;
+    },
+    getUsers() {
+      return this.$store.state.users;
+    },
+  },
   mounted() {
-    this.getProducts();
+    this.$store.dispatch("getProducts");
+    this.$store.dispatch("getUsers");
   },
 };
 </script>
@@ -119,6 +61,7 @@ export default {
   width: 100vw;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-evenly;
 }
