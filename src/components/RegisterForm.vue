@@ -104,9 +104,10 @@ export default {
   flex-direction: row;
   flex-wrap: wrap;
   align-items: flex-start;
+  width: 100vw;
 }
 .banner {
-  height: 80vh;
+  height: 35vw;
   top: 0;
 }
 .banner img {

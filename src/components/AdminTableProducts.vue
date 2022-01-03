@@ -1,6 +1,13 @@
 <template>
   <div class="sidebar-table">
     <v-data-table :headers="productsHeaders" :items="products">
+      <template v-slot:item.stock="{ item }">
+        <div class="row">
+          <td v-if="item.stock">In Stock</td>
+          <td v-else>Out of stock</td>
+          <input class="primary" type="checkbox" v-model="item.stock" />
+        </div>
+      </template>
       <template v-slot:item.action="{ item }">
         <v-btn class="actions" icon @click="deleteProduct(item.id)"
           ><Icon icon="mdi:trash-can" />
@@ -39,7 +46,7 @@ export default {
 };
 </script>
 
-<style>
+<style Scoped>
 .actions {
   margin: 4px !important;
   background-color: #c1f1d3 !important;
@@ -47,5 +54,12 @@ export default {
 }
 .actions:hover {
   background-color: var(--main-secondary-color) !important;
+}
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row !important;
+  width: 150px !important;
 }
 </style>

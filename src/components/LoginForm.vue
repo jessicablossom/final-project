@@ -67,7 +67,6 @@ export default {
           password: this.password,
         };
         this.$store.dispatch("loginUser", loginForm);
-        this.$router.push("/admin");
       }
     },
   },
@@ -91,9 +90,10 @@ export default {
   flex-direction: row;
   flex-wrap: wrap;
   align-items: flex-start;
+  width: 100vw;
 }
 .banner {
-  height: 80vh;
+  height: 35vw;
   top: 0;
 }
 .banner img {

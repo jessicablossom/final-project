@@ -1,9 +1,12 @@
 <template>
   <v-container>
     <v-data-table :headers="usersHeaders" :items="users" item-key="">
-      <template>
-        <td v-if="{ adminrole }">Admin</td>
-        <td>User</td>
+      <template v-slot:item.adminrole="{ item }">
+        <div class="row">
+          <td v-if="item.adminrole">Admin</td>
+          <td v-else>User</td>
+          <input class="primary" type="checkbox" v-model="item.adminrole" />
+        </div>
       </template>
       <template v-slot:item.action="{ user }">
         <v-btn class="actions" icon @click="deleteUser(user.id)"
@@ -42,4 +45,12 @@ export default {
 };
 </script>
 
-<style></style>
+<style Scoped>
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row !important;
+  width: 80px;
+}
+</style>
