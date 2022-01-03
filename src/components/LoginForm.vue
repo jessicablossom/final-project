@@ -4,16 +4,15 @@
       <img class="hero" src="../assets/hero.jpeg" />
     </div>
     <v-form
+      class="login"
       ref="login"
       v-model="valid"
       v-on:submit.prevent="onSubmit"
-      class="login"
     >
       <v-container fluid>
         <h2>Login</h2>
-
         <v-text-field
-          v-model="inputEmail"
+          v-model="email"
           :rules="emailRules"
           label="Email"
           placeholder="user@mail.com"
@@ -21,18 +20,21 @@
         ></v-text-field>
         <v-text-field
           label="Password"
-          v-model="inputPassword"
-          :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+          v-model="password"
           :rules="passwordRules"
+          :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
           :type="show1 ? 'text' : 'password'"
           hint="At least 8 characters"
           @click:append="show1 = !show1"
           counter
         />
-        <v-btn block>Login</v-btn>
+        <v-btn block @click="validate">Login</v-btn>
         <p>Forgot pasword?</p>
-        <p>Don't haven an account? <a href="">Create one here</a></p>
-      </v-container>
+        <p>
+          Don't haven an account?
+          <router-link to="/register">Create one</router-link>
+        </p></v-container
+      >
     </v-form>
     <div class="footer">
       <h1>Your favourite frieds any moment any place</h1>
@@ -46,15 +48,35 @@ export default {
   components: {},
   data() {
     return {
+      valid: false,
       show1: false,
-      inputEmail: "",
-      inputPassword: "",
+      email: "",
+      password: "",
       emailRules: [
         (v) => !!v || "Email is required",
         (v) => /.+@.+\..+/.test(v) || "Email must be valid",
       ],
       passwordRules: [(v) => !!v || "Password is required"],
     };
+  },
+  methods: {
+    validate() {
+      if (this.$refs.login.validate()) {
+        let loginForm = {
+          email: this.email,
+          password: this.password,
+        };
+        this.$store.dispatch("loginUser", loginForm);
+      }
+    },
+  },
+  computed: {
+    getUsers() {
+      return this.$store.state.users;
+    },
+  },
+  mounted() {
+    this.$store.dispatch("getUsers");
   },
 };
 </script>
@@ -76,27 +98,27 @@ export default {
 .banner img {
   height: 100%;
 }
-.v-form {
-  width: 40vw;
-}
+
 .login {
+  width: 40vw;
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
   padding: 0 80px 0 80px;
-  width: 35%;
   margin: 20px auto;
   justify-self: start;
   justify-content: space-around;
-}
-h2 {
-  margin-top: 10px;
 }
 .login h2,
 p,
 a {
   text-align: center;
 }
+
+h2 {
+  margin-top: 10px;
+}
+
 a {
   font-weight: bold;
   color: var(--main-secondary-color);

@@ -1,10 +1,8 @@
 <template>
-  <v-main>
-    <h1>register</h1>
-    <RegisterForm
-  /></v-main>
+  <div>
+    <RegisterForm />
+  </div>
 </template>
-
 <script>
 import RegisterForm from "../components/RegisterForm.vue";
 export default {
@@ -14,5 +12,4 @@ export default {
   },
 };
 </script>
-
 <style></style>
