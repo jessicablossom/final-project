@@ -12,6 +12,7 @@
       <v-container fluid>
         <h2>Login</h2>
         <v-text-field
+          color="teal"
           v-model="email"
           :rules="emailRules"
           label="Email"
@@ -19,6 +20,7 @@
           required
         ></v-text-field>
         <v-text-field
+          color="teal"
           label="Password"
           v-model="password"
           :rules="passwordRules"
@@ -124,20 +126,14 @@ a {
   font-weight: bold;
   color: var(--main-secondary-color);
 }
-.input {
-  height: 10px;
-  margin: 10px !important;
-}
-.login input:focus {
-  outline: none;
-}
+
 .v-btn {
   background-color: var(--main-secondary-color) !important;
   border: none;
   color: #303030 !important;
   font-size: 16px;
   height: 30px;
-  margin: 10px 0;
+  margin: 20px 0;
   cursor: pointer;
 }
 .footer {

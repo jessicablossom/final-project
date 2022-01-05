@@ -1,35 +1,18 @@
 <template>
   <v-container class="admin-panel">
-    <v-tabs fixed-tabs v-model="tab" center color="var(--main-secondary-color)">
+    <v-tabs fixed-tabs v-model="tab" center-active color="teal accent-6">
       <v-tab>Orders</v-tab>
       <v-tab>Products Managment</v-tab>
       <v-tab>Users</v-tab>
     </v-tabs>
     <v-tabs-items v-model="tab">
-      <v-tab-item><p>orders</p></v-tab-item>
-      <v-tab-item>
+      <v-tab-item transition="fade-transition"><h1>orders</h1></v-tab-item>
+      <v-tab-item transition="fade-transition">
         <v-container class="column">
-          <div>
-            <v-dialog v-model="dialog" width="500">
-              <template v-slot:activator="{ on, attrs }">
-                <v-btn v-bind="attrs" v-on="on">Add new Product</v-btn>
-              </template>
-
-              <v-card>
-                <v-card-title class="text-h6 green lighten-2">
-                  Add product
-                </v-card-title>
-
-                <v-divider></v-divider>
-                <v-card-text>
-                  <AdminAddProduct></AdminAddProduct>
-                </v-card-text>
-              </v-card>
-            </v-dialog>
-          </div>
+          <AddProduct />
           <AdminTableProducts :products="getProducts" /> </v-container
       ></v-tab-item>
-      <v-tab-item>
+      <v-tab-item transition="fade-transition">
         <v-container><AdminUsers :users="getUsers" /></v-container
       ></v-tab-item>
     </v-tabs-items>
@@ -37,7 +20,7 @@
 </template>
 
 <script>
-import AdminAddProduct from "./AdminAddProduct.vue";
+import AddProduct from "./AddProduct.vue";
 import AdminTableProducts from "./AdminTableProducts.vue";
 import AdminUsers from "./AdminUsers.vue";
 import axios from "axios";
@@ -48,7 +31,7 @@ export default {
   components: {
     AdminUsers,
     AdminTableProducts,
-    AdminAddProduct,
+    AddProduct,
   },
   data() {
     return {
@@ -102,7 +85,9 @@ export default {
   display: flex;
   flex-direction: column;
 }
-
+.v-main {
+  padding-top: 30px !important;
+}
 .container {
   margin-right: 0 !important;
   margin-left: 0 !important;

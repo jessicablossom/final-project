@@ -11,13 +11,20 @@
     >
       <v-container fluid>
         <h2>Create Account</h2>
-        <v-text-field v-model="email" :rules="emailRules" label="Email" />
         <v-text-field
+          color="teal"
+          v-model="email"
+          :rules="emailRules"
+          label="Email"
+        />
+        <v-text-field
+          color="teal"
           v-model="confirmEmail"
           :rules="confirmEmailRules"
           label="Confirm Email"
         />
         <v-text-field
+          color="teal"
           label="Password"
           v-model="password"
           :rules="passwordRules"
@@ -28,6 +35,7 @@
           @click:append="show1 = !show1"
         />
         <v-text-field
+          color="teal"
           label="Confirm Password"
           v-model="confirmPassword"
           :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"

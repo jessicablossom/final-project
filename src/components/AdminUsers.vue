@@ -1,13 +1,12 @@
 <template>
   <div>
     <v-text-field
-      blocked
+      color="teal"
       class="inputSearch"
       v-model="search"
       append-icon="mdi-magnify"
       label="Search"
       single-line
-      hide-details
     ></v-text-field>
     <v-data-table
       :headers="usersHeaders"
@@ -70,9 +69,5 @@ export default {
   margin: 0px 15px !important;
   display: flex;
   justify-content: flex-start !important;
-}
-.v-text-field {
-  align-self: center !important;
-  margin-bottom: 25px;
 }
 </style>

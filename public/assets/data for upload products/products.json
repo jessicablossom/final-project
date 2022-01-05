@@ -1,23 +1,30 @@
 [
   {
+    "name": "Banana Pudding ",
+    "description": "Banana ice cream with marshmallow swirls and vanilla cookies",
+    "stock": true,
+    "price": 2,
+    "image": "./assets/icecream-banana.png"
+  },
+  {
     "name": "Black Cherry ",
     "description": "Vanilla ice cream loaded with bing cherries",
     "stock": true,
     "price": 2,
-    "image": "./assets/icecream-cherry.svg"
+    "image": "./assets/icecream-cherry.png"
   },
   {
     "name": "Chocolate",
     "description": "Rich creamy chocolate ice cream",
     "stock": true,
     "price": 2,
-    "image": "./assets/icecream-chocolate.svg"
+    "image": "./assets/icecream-chocolate.png"
   },
   {
     "name": "Caramel River",
     "description": "Golden vanilla ice cream flooded with caramel swirl",
     "stock": true,
     "price": 2,
-    "image": "./assets/icecream-caramel.svg"
+    "image": "./assets/icecream-caramel.png"
   }
 ]
