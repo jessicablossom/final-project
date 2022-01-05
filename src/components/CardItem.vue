@@ -7,7 +7,14 @@
         <p>{{ product.description }}</p>
         <h3>$ {{ product.price }}</h3>
       </v-col>
-      <v-btn class="mx-2" fab dark small color="var(--main-secondary-color)">
+      <v-btn
+        @click="addCartProduct(product)"
+        class="mx-2"
+        fab
+        dark
+        small
+        color="var(--main-secondary-color)"
+      >
         <v-icon dark> mdi-plus </v-icon>
       </v-btn>
     </v-row>
@@ -15,9 +22,21 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   name: "Card",
   props: ["product"],
+  methods: {
+    addCartProduct(product) {
+      this.$store.dispatch("addCartProduct", product);
+    },
+  },
+  computed: {
+    ...mapState({
+      cart: (state) => state.cart,
+    }),
+  },
 };
 </script>
 <style>
@@ -56,7 +75,7 @@ export default {
   align-self: flex-start;
   background-color: var(--main-secondary-color);
   border: none;
-  color: #ffffff;
+  color: #303030 !important;
   cursor: pointer;
   margin-top: 5px;
 }

@@ -1,8 +1,9 @@
 <template>
   <div class="admin-panel">
     <AdminUsers :users="getUsers" />
-    <AdminAddProduct />
-    <AdminTableProducts :products="getProducts" />
+    <v-container class="rowProduct">
+      <AdminAddProduct /> <AdminTableProducts :products="getProducts"
+    /></v-container>
   </div>
 </template>
 <script>
@@ -96,6 +97,12 @@ export default {
   height: 30px;
   margin: 10px 0;
   cursor: pointer;
+}
+.rowProduct {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
 }
 @media screen and (min-width: 466px) and (max-width: 1279px) {
   .admin-panel {

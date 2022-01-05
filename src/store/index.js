@@ -6,6 +6,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    cart: [],
     users: [],
     newUser: [],
     currentUser: [],
@@ -13,6 +14,9 @@ export default new Vuex.Store({
     newProduct: [],
   },
   mutations: {
+    ADD_TO_CART(state, payload) {
+      state.cart.push(payload);
+    },
     USERS(state, payload) {
       state.users = payload;
     },
@@ -27,6 +31,9 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    addCartProduct({ commit }, payload) {
+      commit("ADD_TO_CART", payload);
+    },
     getProducts(context) {
       axios
         .get("https://61b8f28f38f69a0017ce5e38.mockapi.io/products")

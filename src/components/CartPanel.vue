@@ -1,18 +1,52 @@
 <template>
   <v-col class="right-panel">
     <h3>Your Products</h3>
-    <div class="center">
+    <v-container class="center" v-if="cart.length > 0">
+      <v-data-table disable-sort :headers="cartHeaders" :items="cart">
+      </v-data-table>
+      <v-btn class="order">Send Order</v-btn>
+    </v-container>
+    <v-container class="center" v-else>
       <img src="../assets/empty-cart.png" />
       <p>Your cart is empty</p>
-    </div>
+    </v-container>
   </v-col>
 </template>
 
 <script>
-export default {};
+import { mapState } from "vuex";
+
+export default {
+  name: "cartpanel",
+  computed: {
+    ...mapState({
+      cart: (state) => state.cart,
+    }),
+  },
+  data() {
+    return {
+      cartHeaders: [
+        { text: "Item Name", value: "name" },
+        { text: "Quantity ", value: "quantity" },
+        { text: "Price ", value: "price" },
+        { text: "Total ", value: "total" },
+      ],
+    };
+  },
+};
 </script>
 
 <style>
+.order {
+  background-color: var(--main-secondary-color) !important;
+  border: none;
+  color: #303030 !important;
+  font-size: 16px;
+  height: 30px;
+  margin: 10px 0;
+  cursor: pointer;
+  align-self: fcenter;
+}
 .right-panel {
   width: 37vw;
   border: 0.5px solid #d4d4d4;

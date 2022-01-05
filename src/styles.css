@@ -18,6 +18,11 @@ h1 {
   text-align: left;
   margin-left: 50px;
 }
+table th {
+  background-color: var(--main-secondary-color) !important;
+  color: #303030 !important;
+  height: 40px !important;
+}
 
 #app {
   -webkit-font-smoothing: antialiased;
