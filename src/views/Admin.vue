@@ -1,8 +1,8 @@
 <template>
-  <v-container>
+  <v-main>
     <h1 class="text-align">Admin Panel</h1>
-    <AdminPanel />
-  </v-container>
+    <AdminPanel></AdminPanel>
+  </v-main>
 </template>
 
 <script>

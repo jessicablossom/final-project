@@ -1,41 +1,39 @@
 <template>
-  <div class="sidebar-product">
-    <v-card class="pa-4">
-      <h2>Add New product</h2>
-      <v-form ref="newProduct" v-model="valid" v-on:submit.prevent="onSubmit">
-        <v-text-field
-          v-model="name"
-          :rules="productNameRules"
-          label="Product Name"
-          required
-        />
-        <v-textarea
-          v-model="description"
-          label="Product Description"
-          rows="1"
-          counter="50"
-        />
-        <v-text-field
-          v-model.number="price"
-          :rules="productPriceRules"
-          label="Price"
-          prefix="$"
-          required
-        />
-        <v-text-field
-          v-model="image"
-          label="Image File Path"
-          placeholder="/assets/icecream-cherry.svg"
-        />
-        <v-checkbox
-          v-model="stock"
-          :rules="productStockRules"
-          label="is product in Stock?"
-        />
-        <v-btn @click="validate()" block> Add product</v-btn>
-      </v-form>
-    </v-card>
-  </div>
+  <v-card class="pa-4">
+    <h2>Add New product</h2>
+    <v-form ref="newProduct" v-model="valid" v-on:submit.prevent="onSubmit">
+      <v-text-field
+        v-model="name"
+        :rules="productNameRules"
+        label="Product Name"
+        required
+      />
+      <v-textarea
+        v-model="description"
+        label="Product Description"
+        rows="1"
+        counter="50"
+      />
+      <v-text-field
+        v-model.number="price"
+        :rules="productPriceRules"
+        label="Price"
+        prefix="$"
+        required
+      />
+      <v-text-field
+        v-model="image"
+        label="Image File Path"
+        placeholder="/assets/icecream-cherry.svg"
+      />
+      <v-checkbox
+        v-model="stock"
+        :rules="productStockRules"
+        label="is product in Stock?"
+      />
+      <v-btn @click="validate()" block> Add product</v-btn>
+    </v-form>
+  </v-card>
 </template>
 
 <script>

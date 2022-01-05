@@ -1,13 +1,26 @@
 <template>
-  <div class="admin-panel">
-    <AdminUsers :users="getUsers" />
-    <v-container class="rowProduct">
-      <AdminAddProduct /> <AdminTableProducts :products="getProducts"
-    /></v-container>
-  </div>
+  <v-container class="admin-panel">
+    <v-tabs fixed-tabs v-model="tab" center color="var(--main-secondary-color)">
+      <v-tabs-slider></v-tabs-slider>
+      <v-tab>Orders</v-tab>
+      <v-tab>Products Managment</v-tab>
+      <v-tab>Users</v-tab>
+    </v-tabs>
+    <v-tabs-items v-model="tab">
+      <v-tab-item><p>orders</p></v-tab-item>
+      <v-tab-item>
+        <v-container class="column">
+          <v-btn>Add new Product</v-btn>
+          <AdminTableProducts :products="getProducts" /></v-container
+      ></v-tab-item>
+      <v-tab-item>
+        <v-container><AdminUsers :users="getUsers" /></v-container
+      ></v-tab-item>
+    </v-tabs-items>
+  </v-container>
 </template>
+
 <script>
-import AdminAddProduct from "./AdminAddProduct.vue";
 import AdminTableProducts from "./AdminTableProducts.vue";
 import AdminUsers from "./AdminUsers.vue";
 
@@ -18,11 +31,12 @@ export default {
 
   components: {
     AdminUsers,
-    AdminAddProduct,
     AdminTableProducts,
   },
   data() {
     return {
+      tab: null,
+
       usersHeaders: [
         { text: "Email", value: "email" },
         { text: "UserID", value: "id" },
@@ -58,25 +72,16 @@ export default {
 </script>
 
 <style>
+.v-window__container {
+  align-items: center;
+  width: 100vw;
+}
 .admin-panel {
   width: 100vw;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: space-evenly;
-}
-.sidebar-product {
-  width: 20vw !important;
-  border: none;
-  display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  left: 0;
 }
-.sidebar-table {
-  width: 70vw !important;
-}
+
 .container {
   margin-right: 0 !important;
   margin-left: 0 !important;

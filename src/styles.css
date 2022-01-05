@@ -23,6 +23,16 @@ table th {
   color: #303030 !important;
   height: 40px !important;
 }
+.v-data-footer {
+  display: flex;
+  flex-wrap: wrap !important;
+}
+.v-data-footer__select,
+.v-data-footer__pagination {
+  margin: 0px 15px !important;
+  display: flex;
+  justify-content: flex-start !important;
+}
 
 #app {
   -webkit-font-smoothing: antialiased;

@@ -1,23 +1,21 @@
 <template>
-  <v-container>
-    <v-data-table :headers="usersHeaders" :items="users" item-key="">
-      <template v-slot:item.adminrole="{ item }">
-        <div class="row">
-          <td v-if="item.adminrole">Admin</td>
-          <td v-else>User</td>
-          <input class="primary" type="checkbox" v-model="item.adminrole" />
-        </div>
-      </template>
-      <template v-slot:item.action="{ user }">
-        <v-btn class="actions" icon @click="deleteUser(user.id)"
-          ><Icon icon="mdi:trash-can" />
-        </v-btn>
-        <v-btn class="actions" icon @click="editUser(user.id)"
-          ><Icon icon="ant-design:edit-filled" />
-        </v-btn>
-      </template>
-    </v-data-table>
-  </v-container>
+  <v-data-table :headers="usersHeaders" :items="users" item-key="">
+    <template v-slot:item.adminrole="{ item }">
+      <div class="row">
+        <td v-if="item.adminrole">Admin</td>
+        <td v-else>User</td>
+        <input class="primary" type="checkbox" v-model="item.adminrole" />
+      </div>
+    </template>
+    <template v-slot:item.action="{ user }">
+      <v-btn class="actions" icon @click="deleteUser(user.id)"
+        ><Icon icon="mdi:trash-can" />
+      </v-btn>
+      <v-btn class="actions" icon @click="editUser(user.id)"
+        ><Icon icon="ant-design:edit-filled" />
+      </v-btn>
+    </template>
+  </v-data-table>
 </template>
 
 <script>
@@ -45,12 +43,15 @@ export default {
 };
 </script>
 
-<style Scoped>
-.row {
+<style>
+.v-data-footer {
   display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-direction: row !important;
-  width: 80px;
+  flex-wrap: wrap !important;
+}
+.v-data-footer__select,
+.v-data-footer__pagination {
+  margin: 0px 15px !important;
+  display: flex;
+  justify-content: flex-start !important;
 }
 </style>
