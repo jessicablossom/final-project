@@ -1,21 +1,37 @@
 <template>
-  <v-data-table :headers="usersHeaders" :items="users" item-key="">
-    <template v-slot:item.adminrole="{ item }">
-      <div class="row">
-        <td v-if="item.adminrole">Admin</td>
-        <td v-else>User</td>
-        <input class="primary" type="checkbox" v-model="item.adminrole" />
-      </div>
-    </template>
-    <template v-slot:item.action="{ user }">
-      <v-btn class="actions" icon @click="deleteUser(user.id)"
-        ><Icon icon="mdi:trash-can" />
-      </v-btn>
-      <v-btn class="actions" icon @click="editUser(user.id)"
-        ><Icon icon="ant-design:edit-filled" />
-      </v-btn>
-    </template>
-  </v-data-table>
+  <div>
+    <v-text-field
+      blocked
+      class="inputSearch"
+      v-model="search"
+      append-icon="mdi-magnify"
+      label="Search"
+      single-line
+      hide-details
+    ></v-text-field>
+    <v-data-table
+      :headers="usersHeaders"
+      :items="users"
+      item-key=""
+      :search="search"
+    >
+      <template v-slot:item.adminrole="{ item }">
+        <div class="row">
+          <td v-if="item.adminrole">Admin</td>
+          <td v-else>User</td>
+          <input class="primary" type="checkbox" v-model="item.adminrole" />
+        </div>
+      </template>
+      <template v-slot:item.action="{ user }">
+        <v-btn class="actions" icon @click="deleteUser(user.id)"
+          ><Icon icon="mdi:trash-can" />
+        </v-btn>
+        <v-btn class="actions" icon @click="editUser(user.id)"
+          ><Icon icon="ant-design:edit-filled" />
+        </v-btn>
+      </template>
+    </v-data-table>
+  </div>
 </template>
 
 <script>
@@ -29,6 +45,7 @@ export default {
   },
   data() {
     return {
+      search: "",
       usersHeaders: [
         { text: "UserID", value: "id" },
         { text: "Email", value: "email" },
@@ -53,5 +70,9 @@ export default {
   margin: 0px 15px !important;
   display: flex;
   justify-content: flex-start !important;
+}
+.v-text-field {
+  align-self: center !important;
+  margin-bottom: 25px;
 }
 </style>

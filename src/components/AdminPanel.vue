@@ -1,7 +1,6 @@
 <template>
   <v-container class="admin-panel">
     <v-tabs fixed-tabs v-model="tab" center color="var(--main-secondary-color)">
-      <v-tabs-slider></v-tabs-slider>
       <v-tab>Orders</v-tab>
       <v-tab>Products Managment</v-tab>
       <v-tab>Users</v-tab>
@@ -10,8 +9,25 @@
       <v-tab-item><p>orders</p></v-tab-item>
       <v-tab-item>
         <v-container class="column">
-          <v-btn>Add new Product</v-btn>
-          <AdminTableProducts :products="getProducts" /></v-container
+          <div>
+            <v-dialog v-model="dialog" width="500">
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn v-bind="attrs" v-on="on">Add new Product</v-btn>
+              </template>
+
+              <v-card>
+                <v-card-title class="text-h6 green lighten-2">
+                  Add product
+                </v-card-title>
+
+                <v-divider></v-divider>
+                <v-card-text>
+                  <AdminAddProduct></AdminAddProduct>
+                </v-card-text>
+              </v-card>
+            </v-dialog>
+          </div>
+          <AdminTableProducts :products="getProducts" /> </v-container
       ></v-tab-item>
       <v-tab-item>
         <v-container><AdminUsers :users="getUsers" /></v-container
@@ -21,9 +37,9 @@
 </template>
 
 <script>
+import AdminAddProduct from "./AdminAddProduct.vue";
 import AdminTableProducts from "./AdminTableProducts.vue";
 import AdminUsers from "./AdminUsers.vue";
-
 import axios from "axios";
 
 export default {
@@ -32,11 +48,12 @@ export default {
   components: {
     AdminUsers,
     AdminTableProducts,
+    AdminAddProduct,
   },
   data() {
     return {
       tab: null,
-
+      dialog: false,
       usersHeaders: [
         { text: "Email", value: "email" },
         { text: "UserID", value: "id" },
@@ -72,6 +89,10 @@ export default {
 </script>
 
 <style>
+.v-application .green.lighten-2 {
+  background-color: var(--main-secondary-color) !important;
+  color: #303030;
+}
 .v-window__container {
   align-items: center;
   width: 100vw;
@@ -102,6 +123,10 @@ export default {
   height: 30px;
   margin: 10px 0;
   cursor: pointer;
+}
+.v-application .red {
+  background-color: var(--light-primary-color) !important;
+  color: white !important;
 }
 .rowProduct {
   display: flex;

@@ -1,6 +1,5 @@
 <template>
-  <v-card class="pa-4">
-    <h2>Add New product</h2>
+  <div>
     <v-form ref="newProduct" v-model="valid" v-on:submit.prevent="onSubmit">
       <v-text-field
         v-model="name"
@@ -31,9 +30,10 @@
         :rules="productStockRules"
         label="is product in Stock?"
       />
-      <v-btn @click="validate()" block> Add product</v-btn>
+      <v-btn class="red" @click="close()"> Cancel </v-btn>
+      <v-btn @click="validate()"> Add product</v-btn>
     </v-form>
-  </v-card>
+  </div>
 </template>
 
 <script>
@@ -42,6 +42,7 @@ export default {
   name: "AddProduct",
   data() {
     return {
+      dialog: false,
       valid: false,
       newProduct: {
         name: "",
@@ -65,6 +66,7 @@ export default {
           image: this.image,
         };
         this.$store.dispatch("addProducts", newProductForm);
+        this.dialog = false;
       }
     },
     deleteProduct(productId) {
