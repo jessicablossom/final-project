@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Banner />
     <h1>Products</h1>
     <div class="content">
       <div class="product-grid">
@@ -15,11 +16,14 @@
 import CardItem from "../components/CardItem.vue";
 import CartPanel from "../components/CartPanel.vue";
 import { mapGetters } from "vuex";
+import Banner from "../components/Banner.vue";
+
 export default {
   name: "Home",
   components: {
     CardItem,
     CartPanel,
+    Banner,
   },
   computed: {
     ...mapGetters(["products"]),
