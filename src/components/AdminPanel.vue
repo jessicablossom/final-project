@@ -7,11 +7,7 @@
     </v-tabs>
     <v-tabs-items v-model="tab">
       <v-tab-item transition="fade-transition"><h1>orders</h1>
-      <v-data-table>
-        <thead><tr>
-          <th>Status</th></tr>
-        </thead>
-      </v-data-table>
+      <Orders :orders="getOrders"/>
       </v-tab-item>
       <v-tab-item transition="fade-transition">
         <div class="column container">
@@ -29,6 +25,7 @@
 import AddProduct from "./AddProduct.vue";
 import AdminTableProducts from "./AdminTableProducts.vue";
 import AdminUsers from "./AdminUsers.vue";
+import Orders from "./Orders.vue"
 import axios from "axios";
 
 export default {
@@ -38,17 +35,13 @@ export default {
     AdminUsers,
     AdminTableProducts,
     AddProduct,
+    Orders,
   },
   data() {
     return {
       tab: null,
       dialog: false,
-      usersHeaders: [
-        { text: "Email", value: "email" },
-        { text: "UserID", value: "id" },
-        { text: "role", value: "adminrole" },
-      ],
-    };
+      }
   },
   methods: {
     deleteProduct(productId) {
@@ -69,10 +62,15 @@ export default {
     getUsers() {
       return this.$store.state.users;
     },
+    getOrders() {
+      return this.$store.state.orders;
+    }
   },
   mounted() {
     this.$store.dispatch("getProducts");
     this.$store.dispatch("getUsers");
+    this.$store.dispatch("getOrders");
+
   },
 };
 </script>

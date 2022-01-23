@@ -1,5 +1,5 @@
 <template>
-  <div class="banner" />
+  <div class="banner"></div>
 </template>
 <script></script>
 <style scoped>
@@ -9,5 +9,6 @@
   background-image: url("../assets/banner.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
+  opacity: 90%;
 }
 </style>

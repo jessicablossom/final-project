@@ -12,6 +12,8 @@ export default new Vuex.Store({
     currentUser: [],
     products: [],
     newProduct: [],
+    orders: [],
+    newOrder: [],
   },
   mutations: {
     ADD_TO_CART(state, payload) {
@@ -28,6 +30,12 @@ export default new Vuex.Store({
     },
     PRODUCTS(state, payload) {
       state.products = payload;
+    },
+    ADDORDER(state, payload) {
+      state.newOrder = payload;
+    },
+    ORDERS(state, payload) {
+      state.orders = payload;
     },
   },
   actions: {
@@ -62,6 +70,21 @@ export default new Vuex.Store({
         .then((result) => {
           context.commit("ADDUSER", result.data);
           context.dispatch("getUsers");
+        });
+    },
+    addOrder(context, payload) {
+      axios
+        .post("https://61b8f28f38f69a0017ce5e38.mockapi.io/orders", payload)
+        .then((result) => {
+          context.commit("ADDORDER", result.data);
+          context.dispatch("getOrders");
+        });
+    },
+    getOrders(context) {
+      axios
+        .get("https://61b8f28f38f69a0017ce5e38.mockapi.io/orders")
+        .then((data) => {
+          context.commit("ORDERS", data.data);
         });
     },
   },
