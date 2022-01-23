@@ -17,11 +17,11 @@ export default new Vuex.Store({
     ADD_TO_CART(state, payload) {
       state.cart.push(payload);
     },
-    USERS(state, payload) {
-      state.users = payload;
-    },
     ADDUSER(state, payload) {
       state.newUser = payload;
+    },
+    USERS(state, payload) {
+      state.users = payload;
     },
     ADDPRODUCT(state, payload) {
       state.newProduct = payload;
@@ -64,6 +64,9 @@ export default new Vuex.Store({
           context.dispatch("getUsers");
         });
     },
+  },
+  getters: {
+    products: (state) => state.products,
   },
   modules: {},
 });

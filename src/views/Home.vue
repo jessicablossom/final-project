@@ -12,32 +12,20 @@
   </div>
 </template>
 <script>
-import axios from "axios";
 import CardItem from "../components/CardItem.vue";
 import CartPanel from "../components/CartPanel.vue";
-
+import { mapGetters } from "vuex";
 export default {
   name: "Home",
   components: {
     CardItem,
     CartPanel,
   },
-  methods: {
-    getProducts() {
-      axios
-        .get("https://61b8f28f38f69a0017ce5e38.mockapi.io/products")
-        .then((data) => {
-          this.products = data.data;
-        });
-    },
+  computed: {
+    ...mapGetters(["products"]),
   },
   mounted() {
-    this.getProducts();
-  },
-  data() {
-    return {
-      products: [],
-    };
+    this.$store.dispatch("getProducts");
   },
 };
 </script>

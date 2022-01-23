@@ -2,7 +2,9 @@
   <div>
     <v-dialog v-model="dialog" width="500">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn v-bind="attrs" v-on="on">Add new Product</v-btn>
+        <v-btn class="primary-green" v-bind="attrs" v-on="on"
+          >Add new Product</v-btn
+        >
       </template>
       <v-card>
         <v-card-title class="text-h6 green lighten-2">
@@ -49,8 +51,12 @@
               :rules="productStockRules"
               label="is product in Stock?"
             />
-            <v-btn class="red" @click="dialog = false"> Cancel </v-btn>
-            <v-btn @click="createProduct()"> Add product</v-btn>
+            <div class="space-between">
+              <v-btn class="light-red" @click="dialog = false"> Cancel </v-btn>
+              <v-btn class="primary-green" @click="createProduct()">
+                Add product</v-btn
+              >
+            </div>
           </v-form>
         </v-card-text>
       </v-card>
@@ -105,4 +111,22 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.primary-green {
+  background-color: var(--main-secondary-color) !important;
+  margin-bottom: 20px;
+}
+.light-red {
+  background-color: var(--main-primary-color) !important;
+  color: white !important;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.space-between {
+  width: 400px !important;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+</style>

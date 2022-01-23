@@ -6,11 +6,17 @@
       <v-tab>Users</v-tab>
     </v-tabs>
     <v-tabs-items v-model="tab">
-      <v-tab-item transition="fade-transition"><h1>orders</h1></v-tab-item>
+      <v-tab-item transition="fade-transition"><h1>orders</h1>
+      <v-data-table>
+        <thead><tr>
+          <th>Status</th></tr>
+        </thead>
+      </v-data-table>
+      </v-tab-item>
       <v-tab-item transition="fade-transition">
-        <v-container class="column">
+        <div class="column container">
           <AddProduct />
-          <AdminTableProducts :products="getProducts" /> </v-container
+          <AdminTableProducts :products="getProducts" /></div
       ></v-tab-item>
       <v-tab-item transition="fade-transition">
         <v-container><AdminUsers :users="getUsers" /></v-container
@@ -71,17 +77,26 @@ export default {
 };
 </script>
 
-<style>
+<style Scoped>
+.v-tabs-items,
+.v-window,
+.v-item-group,
+.container {
+  width: 100vw !important;
+}
 .v-application .green.lighten-2 {
   background-color: var(--main-secondary-color) !important;
   color: #303030;
+  width: 100vw;
 }
+
 .v-window__container {
   align-items: center;
   width: 100vw;
 }
 .admin-panel {
-  width: 100vw;
+  border: red 1px solid;
+  width: 1980px !important;
   display: flex;
   flex-direction: column;
 }
@@ -132,4 +147,8 @@ export default {
     margin: 0 auto 40px auto;
   }
 }
-</style>
+@media (min-width: 1264px){
+  .container {
+    max-width: 96vw !important;
+}
+

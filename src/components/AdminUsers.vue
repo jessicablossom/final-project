@@ -53,6 +53,7 @@ export default {
       ],
     };
   },
+  methods: { deleteUser() {} },
   mounted() {
     this.$store.dispatch("getUsers");
   },

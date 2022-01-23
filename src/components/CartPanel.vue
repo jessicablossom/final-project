@@ -2,22 +2,35 @@
   <v-col class="right-panel">
     <h3>Your Products</h3>
     <v-container class="center" v-if="cart.length > 0">
-      <v-data-table disable-sort :headers="cartHeaders" :items="cart">
+      <v-data-table
+        transition="fade-transition"
+        disable-sort
+        :headers="cartHeaders"
+        :items="cart"
+      >
+        <template v-slot:item.action="{ item }">
+          <v-btn class="actions" icon @click="deleteProduct(item.id)"
+            ><Icon icon="mdi:trash-can" />
+          </v-btn>
+        </template>
       </v-data-table>
       <v-btn class="order">Send Order</v-btn>
     </v-container>
     <v-container class="center" v-else>
-      <img src="../assets/empty-cart.png" />
+      <img transition="fade-transition" src="../assets/empty-cart.png" />
       <p>Your cart is empty</p>
     </v-container>
   </v-col>
 </template>
 
 <script>
+import { Icon } from "@iconify/vue2";
 import { mapState } from "vuex";
 
 export default {
   name: "cartpanel",
+  props: { cart: Object },
+  components: { Icon },
   computed: {
     ...mapState({
       cart: (state) => state.cart,
@@ -30,6 +43,7 @@ export default {
         { text: "Quantity ", value: "quantity" },
         { text: "Price ", value: "price" },
         { text: "Total ", value: "total" },
+        { text: "Actions", value: "action" },
       ],
     };
   },
