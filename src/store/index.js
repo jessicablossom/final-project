@@ -20,7 +20,9 @@ export default new Vuex.Store({
     ADD_TO_CART(state, payload) {
       state.cart.push(payload);
     },
-
+    REMOVE_FROM_CART(state, id) {
+      state.cart = state.cart.filter((item) => item.id !== id);
+    },
     ADD_USER(state, payload) {
       state.newUser = payload;
     },
@@ -47,6 +49,9 @@ export default new Vuex.Store({
   actions: {
     addCartProduct({ commit }, payload) {
       commit("ADD_TO_CART", payload);
+    },
+    removeFromCart({ commit }, id) {
+      commit("REMOVE_FROM_CART", id);
     },
     getProducts(context) {
       context.commit("LOADING_PRODUCTS", true);

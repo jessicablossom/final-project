@@ -1,7 +1,7 @@
 <template>
   <v-col class="right-panel">
     <h3>Your Products</h3>
-    <v-container class="center" v-if="cart.length > 0">
+    <div class="center" v-if="cart.length > 0">
       <v-data-table
         transition="fade-transition"
         disable-sort
@@ -9,28 +9,24 @@
         :items="cart"
       >
         <template v-slot:item.action="{ item }">
-          <v-btn class="actions" icon @click="deleteProduct(item.id)"
-            ><Icon icon="mdi:trash-can" />
-          </v-btn>
+          <v-btn class="actions" icon @click="deleteProduct(item.id)">x</v-btn>
         </template>
       </v-data-table>
       <v-btn class="order">Send Order</v-btn>
-    </v-container>
-    <v-container class="center" v-else>
+    </div>
+    <div class="center" v-else>
       <img transition="fade-transition" src="../assets/empty-cart.png" />
       <p>Your cart is empty</p>
-    </v-container>
+    </div>
   </v-col>
 </template>
 
 <script>
-import { Icon } from "@iconify/vue2";
 import { mapState } from "vuex";
 
 export default {
   name: "cartpanel",
   props: { cart: Object },
-  components: { Icon },
   computed: {
     ...mapState({
       cart: (state) => state.cart,
@@ -47,10 +43,15 @@ export default {
       ],
     };
   },
+  methods: {
+    deleteProduct(id) {
+      this.$store.dispatch("removeFromCart", id);
+    },
+  },
 };
 </script>
 
-<style>
+<style Scoped>
 .order {
   background-color: var(--main-secondary-color) !important;
   border: none;
@@ -76,6 +77,7 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: auto;
 }
 .center img {
   width: 70%;
