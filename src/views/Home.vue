@@ -34,7 +34,7 @@ export default {
     Banner,
   },
   computed: {
-    ...mapGetters(["products", "loadingProducts"]),
+    ...mapGetters(["products", "loadingProducts", "loggedUser"]),
   },
   mounted() {
     this.$store.dispatch("getProducts");

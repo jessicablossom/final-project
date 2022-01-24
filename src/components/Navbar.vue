@@ -2,7 +2,11 @@
   <v-app-bar color="var(--light-primary-color)" app dark>
     <div class="navbar">
       <img src="../assets/Logo.svg" />
-      <ul>
+      <div v-if="loggedUser">
+        Hola, {{ loggedUser.email }}
+        <v-btn @click="logout">Logout</v-btn>
+      </div>
+      <ul v-else>
         <li><router-link to="/register">Register</router-link></li>
         <li><router-link to="/login">Login</router-link></li>
         <li><router-link to="/admin">Admin</router-link></li>
@@ -10,7 +14,20 @@
     </div>
   </v-app-bar>
 </template>
-<script></script>
+<script>
+import { mapGetters } from "vuex";
+export default {
+  name: "Navbar",
+  methods: {
+    logout() {
+      this.$store.commit("LOGOUT_USER");
+    },
+  },
+  computed: {
+    ...mapGetters(["loggedUser"]),
+  },
+};
+</script>
 
 <style scoped>
 .navbar {

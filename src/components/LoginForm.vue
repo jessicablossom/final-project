@@ -30,7 +30,7 @@
           @click:append="show1 = !show1"
           counter
         />
-        <v-btn block @click="validate">Login</v-btn>
+        <v-btn block @click="login">Login</v-btn>
         <p>Forgot pasword?</p>
         <p>
           Don't haven an account?
@@ -62,13 +62,18 @@ export default {
     };
   },
   methods: {
-    validate() {
+    login() {
       if (this.$refs.login.validate()) {
         let loginForm = {
           email: this.email,
           password: this.password,
         };
-        this.$store.dispatch("loginUser", loginForm);
+        this.$store
+          .dispatch("loginUser", loginForm)
+          .then(() => {
+            this.$router.push("/home");
+          })
+          .catch(console.log);
       }
     },
   },

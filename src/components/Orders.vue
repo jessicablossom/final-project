@@ -30,7 +30,7 @@ export default {
     return {
       ordersHeaders: [
         { text: "OrderID", value: "id" },
-        { text: "Username", value: "username" },
+        { text: "Username", value: "email" },
         { text: "Products", value: "products" },
         { text: "Price", value: "total" },
         { text: "Status", value: "status" },

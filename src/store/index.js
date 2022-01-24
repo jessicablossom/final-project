@@ -8,8 +8,8 @@ export default new Vuex.Store({
   state: {
     cart: [],
     users: [],
+    currentUser: undefined,
     newUser: [],
-    currentUser: [],
     products: [],
     newProduct: [],
     loadingProducts: false,
@@ -29,7 +29,12 @@ export default new Vuex.Store({
     USERS(state, payload) {
       state.users = payload;
     },
-
+    LOGIN_USER(state, user) {
+      state.currentUser = user;
+    },
+    LOGOUT_USER(state) {
+      state.currentUser = undefined;
+    },
     ADD_PRODUCT(state, payload) {
       state.newProduct = payload;
     },
@@ -77,6 +82,20 @@ export default new Vuex.Store({
           context.commit("USERS", data.data);
         });
     },
+    loginUser(context, payload) {
+      axios
+        .get(
+          `https://61b8f28f38f69a0017ce5e38.mockapi.io/users?email=${payload.email}`
+        )
+        .then((response) => {
+          const users = response.data;
+          if (users.length == 1 && users[0].password == payload.password) {
+            context.commit("LOGIN_USER", users[0]);
+          } else {
+            return Promise.reject("Invalid User");
+          }
+        });
+    },
     addUser(context, payload) {
       axios
         .post("https://61b8f28f38f69a0017ce5e38.mockapi.io/users", payload)
@@ -85,12 +104,16 @@ export default new Vuex.Store({
           context.dispatch("getUsers");
         });
     },
-    addOrder(context, payload) {
+    sendOrder(context) {
+      const order = {
+        email: this.state.currentUser.email,
+        products: this.state.cart,
+      };
       axios
-        .post("https://61b8f28f38f69a0017ce5e38.mockapi.io/orders", payload)
+        .post("https://61b8f28f38f69a0017ce5e38.mockapi.io/orders", order)
         .then((result) => {
+          console.log(result);
           context.commit("ADD_ORDER", result.data);
-          context.dispatch("getOrders");
         });
     },
     getOrders(context) {
@@ -104,6 +127,7 @@ export default new Vuex.Store({
   getters: {
     products: (state) => state.products,
     loadingProducts: (state) => state.loadingProducts,
+    loggedUser: (state) => state.currentUser,
   },
   modules: {},
 });

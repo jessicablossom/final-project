@@ -12,7 +12,7 @@
           <v-btn class="actions" icon @click="deleteProduct(item.id)">x</v-btn>
         </template>
       </v-data-table>
-      <v-btn class="order">Send Order</v-btn>
+      <v-btn @click="sendOrder" class="order">Send Order</v-btn>
     </div>
     <div class="center" v-else>
       <img transition="fade-transition" src="../assets/empty-cart.png" />
@@ -46,6 +46,9 @@ export default {
   methods: {
     deleteProduct(id) {
       this.$store.dispatch("removeFromCart", id);
+    },
+    sendOrder() {
+      this.$store.dispatch("sendOrder");
     },
   },
 };
