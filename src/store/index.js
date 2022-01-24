@@ -12,6 +12,7 @@ export default new Vuex.Store({
     currentUser: [],
     products: [],
     newProduct: [],
+    loadingProducts: false,
     orders: [],
     newOrder: [],
   },
@@ -19,19 +20,24 @@ export default new Vuex.Store({
     ADD_TO_CART(state, payload) {
       state.cart.push(payload);
     },
-    ADDUSER(state, payload) {
+
+    ADD_USER(state, payload) {
       state.newUser = payload;
     },
     USERS(state, payload) {
       state.users = payload;
     },
-    ADDPRODUCT(state, payload) {
+
+    ADD_PRODUCT(state, payload) {
       state.newProduct = payload;
     },
     PRODUCTS(state, payload) {
       state.products = payload;
     },
-    ADDORDER(state, payload) {
+    LOADING_PRODUCTS(state, payload) {
+      state.loadingProducts = payload;
+    },
+    ADD_ORDER(state, payload) {
       state.newOrder = payload;
     },
     ORDERS(state, payload) {
@@ -43,17 +49,19 @@ export default new Vuex.Store({
       commit("ADD_TO_CART", payload);
     },
     getProducts(context) {
+      context.commit("LOADING_PRODUCTS", true);
       axios
         .get("https://61b8f28f38f69a0017ce5e38.mockapi.io/products")
         .then((data) => {
           context.commit("PRODUCTS", data.data);
+          context.commit("LOADING_PRODUCTS", false);
         });
     },
     addProducts(context, payload) {
       axios
         .post("https://61b8f28f38f69a0017ce5e38.mockapi.io/products", payload)
         .then((result) => {
-          context.commit("ADDPRODUCT", result.data);
+          context.commit("ADD_PRODUCT", result.data);
           context.dispatch("getProducts");
         });
     },
@@ -68,7 +76,7 @@ export default new Vuex.Store({
       axios
         .post("https://61b8f28f38f69a0017ce5e38.mockapi.io/users", payload)
         .then((result) => {
-          context.commit("ADDUSER", result.data);
+          context.commit("ADD_USER", result.data);
           context.dispatch("getUsers");
         });
     },
@@ -76,7 +84,7 @@ export default new Vuex.Store({
       axios
         .post("https://61b8f28f38f69a0017ce5e38.mockapi.io/orders", payload)
         .then((result) => {
-          context.commit("ADDORDER", result.data);
+          context.commit("ADD_ORDER", result.data);
           context.dispatch("getOrders");
         });
     },
@@ -90,6 +98,7 @@ export default new Vuex.Store({
   },
   getters: {
     products: (state) => state.products,
+    loadingProducts: (state) => state.loadingProducts,
   },
   modules: {},
 });

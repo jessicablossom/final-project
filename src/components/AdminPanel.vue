@@ -6,8 +6,9 @@
       <v-tab>Users</v-tab>
     </v-tabs>
     <v-tabs-items v-model="tab">
-      <v-tab-item transition="fade-transition"><h1>orders</h1>
-      <Orders :orders="getOrders"/>
+      <v-tab-item transition="fade-transition"
+        ><h1>orders</h1>
+        <Orders :orders="getOrders" />
       </v-tab-item>
       <v-tab-item transition="fade-transition">
         <div class="column container">
@@ -25,7 +26,8 @@
 import AddProduct from "./AddProduct.vue";
 import AdminTableProducts from "./AdminTableProducts.vue";
 import AdminUsers from "./AdminUsers.vue";
-import Orders from "./Orders.vue"
+import Orders from "./Orders.vue";
+
 import axios from "axios";
 
 export default {
@@ -41,7 +43,7 @@ export default {
     return {
       tab: null,
       dialog: false,
-      }
+    };
   },
   methods: {
     deleteProduct(productId) {
@@ -64,13 +66,12 @@ export default {
     },
     getOrders() {
       return this.$store.state.orders;
-    }
+    },
   },
   mounted() {
     this.$store.dispatch("getProducts");
     this.$store.dispatch("getUsers");
     this.$store.dispatch("getOrders");
-
   },
 };
 </script>
@@ -93,7 +94,6 @@ export default {
   width: 100vw;
 }
 .admin-panel {
-  border: red 1px solid;
   width: 1980px !important;
   display: flex;
   flex-direction: column;
@@ -145,8 +145,6 @@ export default {
     margin: 0 auto 40px auto;
   }
 }
-@media (min-width: 1264px){
-  .container {
-    max-width: 96vw !important;
+@media (min-width: 1264px) {
 }
-
+</style>

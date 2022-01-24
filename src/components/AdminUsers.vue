@@ -1,19 +1,6 @@
 <template>
   <div>
-    <v-text-field
-      color="teal"
-      class="inputSearch"
-      v-model="search"
-      append-icon="mdi-magnify"
-      label="Search"
-      single-line
-    ></v-text-field>
-    <v-data-table
-      :headers="usersHeaders"
-      :items="users"
-      item-key=""
-      :search="search"
-    >
+    <v-data-table :headers="usersHeaders" :items="users" item-key="">
       <template v-slot:item.adminrole="{ item }">
         <div class="row">
           <td v-if="item.adminrole">Admin</td>
@@ -44,7 +31,6 @@ export default {
   },
   data() {
     return {
-      search: "",
       usersHeaders: [
         { text: "UserID", value: "id" },
         { text: "Email", value: "email" },

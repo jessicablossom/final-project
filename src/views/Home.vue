@@ -1,16 +1,24 @@
 <template>
-  <div>
+  <v-main>
     <Banner />
     <h1>Products</h1>
-    <div class="content">
+    <div v-if="loadingProducts">
+      <v-progress-circular
+        class="center"
+        indeterminate
+        size="50"
+        color="teal"
+      ></v-progress-circular>
+    </div>
+    <v-container v-else class="content">
       <div class="product-grid">
         <v-col cols="6" v-for="product in products" :key="product.id">
           <CardItem :product="product" />
         </v-col>
       </div>
       <div><CartPanel class="responsive" /></div>
-    </div>
-  </div>
+    </v-container>
+  </v-main>
 </template>
 <script>
 import CardItem from "../components/CardItem.vue";
@@ -26,7 +34,7 @@ export default {
     Banner,
   },
   computed: {
-    ...mapGetters(["products"]),
+    ...mapGetters(["products", "loadingProducts"]),
   },
   mounted() {
     this.$store.dispatch("getProducts");
@@ -35,7 +43,18 @@ export default {
 </script>
 <style scoped>
 /* min-width: 1280px*/
-
+.banner {
+  margin-top: -64px;
+}
+.v-progress-circular {
+  margin: auto;
+}
+.center {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .content {
   display: flex;
   flex-direction: row;
