@@ -1,7 +1,7 @@
 <template>
-  <v-col class="right-panel">
+  <v-card elevation="2" class="right-panel">
     <div class="center" v-if="cart.length > 0">
-      <h3>Your Cart</h3>
+      <h3>Your Orders</h3>
 
       <v-data-table
         transition="fade-transition"
@@ -14,6 +14,7 @@
         </template>
       </v-data-table>
       <h3 class="left">Total: $ {{ totalCart }}</h3>
+
       <v-dialog v-model="dialog" width="500">
         <template v-slot:activator="{ on, attrs }">
           <v-btn @click="sendOrder" class="order" v-bind="attrs" v-on="on"
@@ -22,14 +23,17 @@
         </template>
         <v-card>
           <v-card-title class="text-h6 green lighten-2"> Order </v-card-title>
-          <v-card-text>
-            <div class="flex-inline">
+          <v-card-text
+            ><div class="flex-inline">
               <p>Your order</p>
               <h2 class="subtitle"># {{ newOrder.id }}</h2>
-              <p>was created successfully!</p>
+              <p>as created successfully!</p>
             </div>
-            <v-btn class="btn" @click="dialog = false"> Ok </v-btn>
-          </v-card-text>
+
+            <v-btn class="primary" @click="dialog = false">
+              Ok
+            </v-btn></v-card-text
+          >
         </v-card>
       </v-dialog>
     </div>
@@ -37,7 +41,7 @@
       <img transition="fade-transition" src="../assets/empty-cart.png" />
       <p>Your cart is empty</p>
     </div>
-  </v-col>
+  </v-card>
 </template>
 
 <script>
@@ -74,9 +78,8 @@ export default {
 </script>
 
 <style Scoped>
-.right-panel.btn {
-  background-color: var(--main-secondary-color) !important;
-  align-self: flex-end !important;
+.primary {
+  background-color: var(--main-secondary-color);
 }
 .flex-inline {
   padding: 20px;
@@ -104,7 +107,7 @@ p {
   align-self: fcenter;
 }
 .right-panel {
-  width: 37vw;
+  width: 40vw;
   border: 0.5px solid #d4d4d4;
   display: flex;
   align-items: flex-start;
@@ -123,10 +126,16 @@ p {
 .center img {
   width: 70%;
 }
-
-@media screen and (min-width: 1080px) and (max-width: 1279px) {
+@media screen and (min-width: 768px) and (max-width: 1079px) {
   .right-panel {
-    width: 30vw;
+    min-width: 45vw;
+    padding: 10px;
+    margin: 20px 10px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .right-panel {
+    min-width: 90vw;
   }
 }
 </style>

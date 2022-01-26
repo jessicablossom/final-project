@@ -16,7 +16,10 @@ body {
 
 h1 {
   text-align: left;
-  margin-left: 50px;
+  margin: 20px 50px;
+}
+h3 {
+  margin: 0px 0 10px 0;
 }
 table th {
   background-color: var(--main-secondary-color) !important;
@@ -38,4 +41,10 @@ table th {
   -moz-osx-font-smoothing: grayscale;
   color: var(--text-primary-color);
   margin-top: 60px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1079px) {
+  .v-data-table td {
+    font-size: 11px !important;
+  }
 }
