@@ -27,12 +27,10 @@
             ><div class="flex-inline">
               <p>Your order</p>
               <h2 class="subtitle"># {{ newOrder.id }}</h2>
-              <p>as created successfully!</p>
+              <p>was created successfully!</p>
             </div>
 
-            <v-btn class="primary" @click="dialog = false">
-              Ok
-            </v-btn></v-card-text
+            <v-btn class="btn" @click="dialog = false"> Ok </v-btn></v-card-text
           >
         </v-card>
       </v-dialog>
@@ -57,6 +55,7 @@ export default {
   },
   data() {
     return {
+      dialog: false,
       cartHeaders: [
         { text: "Item Name", value: "name" },
         { text: "Quantity ", value: "quantity" },
@@ -78,8 +77,8 @@ export default {
 </script>
 
 <style Scoped>
-.primary {
-  background-color: var(--main-secondary-color);
+.v-application .green.lighten-2 {
+  background-color: var(--main-secondary-color) !important;
 }
 .flex-inline {
   padding: 20px;

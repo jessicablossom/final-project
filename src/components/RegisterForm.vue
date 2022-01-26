@@ -177,6 +177,22 @@ export default {
   font-weight: 800;
   margin-top: 50px;
 }
+@media screen and (min-width: 1080px) and (max-width: 1279px) {
+  .register {
+    width: 40vw;
+  }
+  .banner {
+    height: 40vw;
+    top: 0;
+  }
+  .banner img {
+    height: 100%;
+  }
+
+  .footer {
+    margin-top: -10px;
+  }
+}
 
 @media screen and (max-width: 1066px) {
   .register {
@@ -187,6 +203,9 @@ export default {
   }
   .hero {
     display: none;
+  }
+  .footer {
+    margin-top: 10px;
   }
 }
 </style>

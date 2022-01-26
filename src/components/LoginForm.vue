@@ -176,19 +176,19 @@ a {
 
 @media screen and (min-width: 1080px) and (max-width: 1279px) {
   .banner {
-    height: 45vh;
+    height: 48vh;
   }
   .banner img {
-    height: 110%;
+    height: 120%;
   }
   .login {
     margin-top: 30px;
-    width: 35%;
+    width: 40%;
     height: 45vh;
   }
   .footer {
     height: 40vh;
-    margin-top: -20px;
+    margin-top: -40px;
   }
   .v-btn {
     flex: 0 0 auto;
