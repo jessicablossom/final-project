@@ -113,7 +113,7 @@ export default new Vuex.Store({
         .post("https://61b8f28f38f69a0017ce5e38.mockapi.io/users", payload)
         .then((result) => {
           context.commit("ADD_USER", result.data);
-          context.dispatch("getUsers");
+          context.commit("LOGIN_USER", result.data);
         });
     },
     sendOrder(context) {

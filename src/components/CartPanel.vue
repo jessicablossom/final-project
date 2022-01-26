@@ -13,7 +13,7 @@
           <v-btn class="actions" icon @click="deleteProduct(item.id)">x</v-btn>
         </template>
       </v-data-table>
-      <h3 class="left">Total: {{ totalCart }}</h3>
+      <h3 class="left">Total: $ {{ totalCart }}</h3>
       <v-btn @click="sendOrder" class="order">Send Order</v-btn>
     </div>
     <div class="center" v-else>

@@ -45,7 +45,7 @@
           hint="At least 8 characters"
           counter
         />
-        <v-btn block @click="validate()">Create Account</v-btn>
+        <v-btn block @click="createAccount()">Create Account</v-btn>
         <p>
           Already have an account?
           <router-link to="/login">Login here</router-link>
@@ -91,14 +91,15 @@ export default {
     };
   },
   methods: {
-    validate() {
+    createAccount() {
       if (this.$refs.register.validate()) {
-        let registerForm = {
+        const registerForm = {
           email: this.email,
           password: this.password,
         };
-        this.$store.dispatch("addUser", registerForm);
-        this.$router.push("/home");
+        this.$store.dispatch("addUser", registerForm).then(() => {
+          this.$router.push("/home");
+        });
       }
     },
   },
