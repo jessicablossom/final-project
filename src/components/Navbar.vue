@@ -2,10 +2,10 @@
   <v-app-bar color="var(--light-primary-color)" app dark>
     <div class="navbar">
       <img src="../assets/Logo.svg" />
-      <div v-if="loggedUser">
-        Hola, {{ loggedUser.email }}
-        <v-btn @click="logout">Logout</v-btn>
-      </div>
+      <ul v-if="loggedUser">
+        <li>Hola, {{ loggedUser.email }}</li>
+        <li @click="logout">Logout</li>
+      </ul>
       <ul v-else>
         <li><router-link to="/register">Register</router-link></li>
         <li><router-link to="/login">Login</router-link></li>
@@ -60,8 +60,10 @@ export default {
   color: white;
   text-decoration: none;
   font-size: 18px;
-  margin-right: 20px;
   cursor: pointer;
+}
+.v-app-bar li {
+  margin-left: 20px;
 }
 .v-avatar {
   background-color: white;

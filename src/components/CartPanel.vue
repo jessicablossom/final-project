@@ -13,6 +13,7 @@
           <v-btn class="actions" icon @click="deleteProduct(item.id)">x</v-btn>
         </template>
       </v-data-table>
+      <h3 class="left">Total: {{ totalCart }}</h3>
       <v-btn @click="sendOrder" class="order">Send Order</v-btn>
     </div>
     <div class="center" v-else>
@@ -23,7 +24,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
 
 export default {
   name: "cartpanel",
@@ -32,6 +33,7 @@ export default {
     ...mapState({
       cart: (state) => state.cart,
     }),
+    ...mapGetters(["totalCart"]),
   },
   data() {
     return {
@@ -56,6 +58,9 @@ export default {
 </script>
 
 <style Scoped>
+.left {
+  align-self: flex-start;
+}
 .order {
   background-color: var(--main-secondary-color) !important;
   border: none;

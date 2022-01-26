@@ -18,7 +18,19 @@ export default new Vuex.Store({
   },
   mutations: {
     ADD_TO_CART(state, payload) {
-      state.cart.push(payload);
+      if (state.cart.find((item) => item.id == payload.id)) {
+        state.cart = state.cart.map((item) => {
+          if (item.id == payload.id) {
+            const quantity = item.quantity + 1;
+            const total = item.price * quantity;
+            return { ...item, quantity, total };
+          } else {
+            return item;
+          }
+        });
+      } else {
+        state.cart.push({ ...payload, quantity: 1, total: payload.price });
+      }
     },
     REMOVE_FROM_CART(state, id) {
       state.cart = state.cart.filter((item) => item.id !== id);
@@ -108,6 +120,7 @@ export default new Vuex.Store({
       const order = {
         email: this.state.currentUser.email,
         products: this.state.cart,
+        total: this.getters.totalCart,
       };
       axios
         .post("https://61b8f28f38f69a0017ce5e38.mockapi.io/orders", order)
@@ -128,6 +141,7 @@ export default new Vuex.Store({
     products: (state) => state.products,
     loadingProducts: (state) => state.loadingProducts,
     loggedUser: (state) => state.currentUser,
+    totalCart: (state) => state.cart.reduce((acc, el) => (acc += el.total), 0),
   },
   modules: {},
 });
