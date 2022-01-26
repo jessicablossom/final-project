@@ -14,7 +14,24 @@
         </template>
       </v-data-table>
       <h3 class="left">Total: $ {{ totalCart }}</h3>
-      <v-btn @click="sendOrder" class="order">Send Order</v-btn>
+      <v-dialog v-model="dialog" width="500">
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn @click="sendOrder" class="order" v-bind="attrs" v-on="on"
+            >Send Order</v-btn
+          >
+        </template>
+        <v-card>
+          <v-card-title class="text-h6 green lighten-2"> Order </v-card-title>
+          <v-card-text>
+            <div class="flex-inline">
+              <p>Your order</p>
+              <h2 class="subtitle"># {{ newOrder.id }}</h2>
+              <p>was created successfully!</p>
+            </div>
+            <v-btn class="btn" @click="dialog = false"> Ok </v-btn>
+          </v-card-text>
+        </v-card>
+      </v-dialog>
     </div>
     <div class="center" v-else>
       <img transition="fade-transition" src="../assets/empty-cart.png" />
@@ -32,7 +49,7 @@ export default {
     ...mapState({
       cart: (state) => state.cart,
     }),
-    ...mapGetters(["totalCart"]),
+    ...mapGetters(["totalCart", "newOrder"]),
   },
   data() {
     return {
@@ -57,6 +74,22 @@ export default {
 </script>
 
 <style Scoped>
+.right-panel.btn {
+  background-color: var(--main-secondary-color) !important;
+  align-self: flex-end !important;
+}
+.flex-inline {
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+h2,
+p {
+  margin: 0px 5px !important;
+}
+
 .left {
   align-self: flex-start;
 }

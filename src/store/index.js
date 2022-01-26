@@ -143,6 +143,7 @@ export default new Vuex.Store({
     loadingProducts: (state) => state.loadingProducts,
     loggedUser: (state) => state.currentUser,
     totalCart: (state) => state.cart.reduce((acc, el) => (acc += el.total), 0),
+    newOrder: (state) => state.newOrder,
   },
   modules: {},
 });

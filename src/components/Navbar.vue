@@ -4,7 +4,7 @@
       <img src="../assets/Logo.svg" />
       <ul v-if="loggedUser">
         <li>Hola, {{ loggedUser.email }}</li>
-        <li @click="logout">Logout</li>
+        <li class="logout" @click="logout">Logout</li>
       </ul>
     </div>
   </v-app-bar>
@@ -60,6 +60,13 @@ export default {
 }
 .v-app-bar li {
   margin-left: 20px;
+}
+.logout {
+  cursor: pointer;
+  font-weight: bold;
+  background-color: white;
+  color: #303030;
+  padding: 2px 10px;
 }
 .v-avatar {
   background-color: white;
