@@ -1,7 +1,9 @@
 <template>
   <v-app-bar color="var(--light-primary-color)" app dark>
     <div class="navbar">
-      <img src="../assets/Logo.svg" />
+      <router-link to="/">
+        <img src="../assets/Logo.svg" />
+      </router-link>
       <ul v-if="loggedUser">
         <li>Hola, {{ loggedUser.email }}</li>
         <li class="logout" @click="logout">Logout</li>
