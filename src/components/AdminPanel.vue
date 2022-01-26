@@ -6,8 +6,7 @@
       <v-tab>Users</v-tab>
     </v-tabs>
     <v-tabs-items v-model="tab">
-      <v-tab-item transition="fade-transition"
-        ><h1>orders</h1>
+      <v-tab-item transition="fade-transition">
         <Orders :orders="getOrders" />
       </v-tab-item>
       <v-tab-item transition="fade-transition">

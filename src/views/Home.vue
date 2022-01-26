@@ -43,6 +43,9 @@ export default {
 </script>
 <style scoped>
 /* min-width: 1280px*/
+.v-main {
+  padding: 0 !important;
+}
 .banner {
   margin-top: -64px;
 }
