@@ -100,6 +100,7 @@ export default {
         this.$store.dispatch("addUser", registerForm).then(() => {
           this.$router.push("/home");
         });
+        this.$refs.register.reset();
       }
     },
   },

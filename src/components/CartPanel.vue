@@ -28,7 +28,6 @@ import { mapState, mapGetters } from "vuex";
 
 export default {
   name: "cartpanel",
-  props: { cart: Object },
   computed: {
     ...mapState({
       cart: (state) => state.cart,

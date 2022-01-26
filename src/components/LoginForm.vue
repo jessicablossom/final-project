@@ -31,7 +31,7 @@
           counter
         />
         <v-btn block @click="login">Login</v-btn>
-        <p>Forgot pasword?</p>
+        <p class="errorMessage" v-if="error">Invalid User</p>
         <p>
           Don't haven an account?
           <router-link to="/register">Create one</router-link>
@@ -45,11 +45,14 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "LoginForm",
   components: {},
   data() {
     return {
+      error: false,
       valid: false,
       show1: false,
       email: "",
@@ -70,14 +73,23 @@ export default {
         };
         this.$store
           .dispatch("loginUser", loginForm)
-          .then(() => {
-            this.$router.push("/home");
+          .then((user) => {
+            this.error = false;
+            if (user.adminrole) {
+              this.$router.push("/admin");
+            } else {
+              this.$router.push("/home");
+            }
           })
-          .catch(console.log);
+          .catch(() => {
+            this.error = true;
+          });
+        this.$refs.login.reset();
       }
     },
   },
   computed: {
+    ...mapGetters(["loggedUser"]),
     getUsers() {
       return this.$store.state.users;
     },
@@ -90,7 +102,11 @@ export default {
 
 <style>
 /* media screen and (min-1280px) */
-
+.errorMessage {
+  margin-top: 25px;
+  background-color: var(--main-primary-color);
+  color: white;
+}
 .container-v {
   background-color: white;
   display: flex;

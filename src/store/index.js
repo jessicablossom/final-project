@@ -95,7 +95,7 @@ export default new Vuex.Store({
         });
     },
     loginUser(context, payload) {
-      axios
+      return axios
         .get(
           `https://61b8f28f38f69a0017ce5e38.mockapi.io/users?email=${payload.email}`
         )
@@ -103,8 +103,9 @@ export default new Vuex.Store({
           const users = response.data;
           if (users.length == 1 && users[0].password == payload.password) {
             context.commit("LOGIN_USER", users[0]);
+            return users[0];
           } else {
-            return Promise.reject("Invalid User");
+            throw "Invalid User";
           }
         });
     },

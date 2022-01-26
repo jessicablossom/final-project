@@ -6,11 +6,6 @@
         <li>Hola, {{ loggedUser.email }}</li>
         <li @click="logout">Logout</li>
       </ul>
-      <ul v-else>
-        <li><router-link to="/register">Register</router-link></li>
-        <li><router-link to="/login">Login</router-link></li>
-        <li><router-link to="/admin">Admin</router-link></li>
-      </ul>
     </div>
   </v-app-bar>
 </template>
@@ -21,6 +16,7 @@ export default {
   methods: {
     logout() {
       this.$store.commit("LOGOUT_USER");
+      this.$router.push("/");
     },
   },
   computed: {
