@@ -21,7 +21,7 @@
             >Send Order</v-btn
           >
         </template>
-        <v-card>
+        <v-card v-if="loggedUser">
           <v-card-title class="text-h6 green lighten-2"> Order </v-card-title>
           <v-card-text
             ><div class="flex-inline">
@@ -31,6 +31,17 @@
             </div>
 
             <v-btn class="btn" @click="dialog = false"> Ok </v-btn></v-card-text
+          >
+        </v-card>
+        <v-card v-else>
+          <v-card-title class="text-h6 green lighten-2"> Login </v-card-title>
+          <v-card-text
+            ><div class="flex-inline">
+              <p>You need to login to create your order</p>
+            </div>
+            <v-btn class="btn" @click="orderLogin()">
+              Login
+            </v-btn></v-card-text
           >
         </v-card>
       </v-dialog>
@@ -51,7 +62,7 @@ export default {
     ...mapState({
       cart: (state) => state.cart,
     }),
-    ...mapGetters(["totalCart", "newOrder"]),
+    ...mapGetters(["totalCart", "newOrder", "loggedUser"]),
   },
   data() {
     return {
@@ -71,6 +82,9 @@ export default {
     },
     sendOrder() {
       this.$store.dispatch("sendOrder");
+    },
+    orderLogin() {
+      this.$router.push("/login");
     },
   },
 };
