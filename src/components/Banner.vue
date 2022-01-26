@@ -9,6 +9,6 @@
   background-image: url("../assets/admin-bnr.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
-  opacity: 90%;
+  opacity: 90% !important;
 }
 </style>
