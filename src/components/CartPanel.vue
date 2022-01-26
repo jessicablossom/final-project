@@ -1,7 +1,8 @@
 <template>
   <v-col class="right-panel">
-    <h3>Your Products</h3>
     <div class="center" v-if="cart.length > 0">
+      <h3>Your Cart</h3>
+
       <v-data-table
         transition="fade-transition"
         disable-sort
