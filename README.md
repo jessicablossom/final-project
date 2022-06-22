@@ -1,4 +1,17 @@
 # final-project
+Plataforma de compra de comida rapida realizada en Vue / vuex
+
+Credentials: 
+
+user@mail.com
+
+password123
+
+
+
+admin@mail.com
+
+password123
 
 ## Project setup
 ```
